@@ -75,9 +75,9 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         // Ensure the player doesn't fall too fast
-        if (rb.velocity.y < -20f) // Replace with your max fall speed if different
+        if (rb.velocity.y < -25f) // Replace with your max fall speed if different
         {
-            rb.velocity = new Vector2(rb.velocity.x, -20f);
+            rb.velocity = new Vector2(rb.velocity.x, -25f);
         }
     }
 }
