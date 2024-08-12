@@ -2,15 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class PlayerMovement : MonoBehaviour
 {
-    public float jumpForce = 10f;
-    public float maxFallSpeed = -20f;
-    public float moveSpeed = 5f;
+    public float minJumpForce = 5f;
+    public float maxJumpForce = 20f;
+    public float maxHoldTime = 2f; // Time in seconds to reach maximum jump force
+    public float moveSpeed = 5f; // Speed for horizontal jump movement
+    public float groundCheckRadius = 0.1f; // Radius for ground detection
+    public LayerMask groundLayer; // LayerMask to define what is ground
 
     private Rigidbody2D rb;
     private bool isGrounded;
+    private bool isHoldingJump = false;
+    private float holdTime = 0f;
+    private float moveDirection = 0f;
+
+    public Transform groundCheck; // Empty GameObject positioned at the player's feet
 
     void Start()
     {
@@ -20,49 +27,57 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         HandleInput();
+        CheckGrounded();
     }
 
     void HandleInput()
     {
-        // Jumping
+        // Capture direction input while holding jump
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            Jump();
+            isHoldingJump = true;
+            holdTime = 0f;
+
+            // Check for direction input
+            moveDirection = Input.GetAxisRaw("Horizontal"); // -1 for left, 1 for right, 0 for no input
         }
 
-        // Horizontal Movement
-        float move = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(move * moveSpeed, rb.velocity.y);
+        // While holding the jump
+        if (isHoldingJump && Input.GetButton("Jump"))
+        {
+            holdTime += Time.deltaTime;
+        }
+
+        // Release jump button
+        if (isHoldingJump && Input.GetButtonUp("Jump"))
+        {
+            Jump();
+            isHoldingJump = false;
+        }
     }
 
     void Jump()
     {
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        // Calculate jump force based on hold time
+        float jumpForce = Mathf.Lerp(minJumpForce, maxJumpForce, holdTime / maxHoldTime);
+        float horizontalJump = moveDirection * moveSpeed;
+
+        // Apply jump force in the direction
+        rb.velocity = new Vector2(horizontalJump, jumpForce);
+    }
+
+    void CheckGrounded()
+    {
+        // Check if the player is grounded using a small circle at the groundCheck position
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
     }
 
     void FixedUpdate()
     {
-        // Limit fall speed
-        if (rb.velocity.y < maxFallSpeed)
+        // Ensure the player doesn't fall too fast
+        if (rb.velocity.y < -20f) // Replace with your max fall speed if different
         {
-            rb.velocity = new Vector2(rb.velocity.x, maxFallSpeed);
+            rb.velocity = new Vector2(rb.velocity.x, -20f);
         }
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.contacts.Length > 0)
-        {
-            ContactPoint2D contact = collision.contacts[0];
-            if (Vector2.Dot(contact.normal, Vector2.up) > 0.5)
-            {
-                isGrounded = true;
-            }
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        isGrounded = false;
     }
 }
