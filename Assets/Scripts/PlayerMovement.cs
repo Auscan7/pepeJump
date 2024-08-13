@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isHoldingJump = false;
     private float holdTime = 0f;
     private float moveDirection = 0f;
+    private float lastMoveDirection = 0f; // Stores the last horizontal input direction
 
     public Transform groundCheck; // Empty GameObject positioned at the player's feet
 
@@ -32,19 +33,24 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleInput()
     {
-        // Capture direction input while holding jump
+        // Start holding the jump
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             isHoldingJump = true;
             holdTime = 0f;
-
-            // Check for direction input
-            moveDirection = Input.GetAxisRaw("Horizontal"); // -1 for left, 1 for right, 0 for no input
         }
 
-        // While holding the jump
-        if (isHoldingJump && Input.GetButton("Jump"))
+        // Continuously update the direction based on input
+        if (isHoldingJump)
         {
+            moveDirection = Input.GetAxisRaw("Horizontal"); // -1 for left, 1 for right, 0 for no input
+
+            // If there is horizontal input, update the lastMoveDirection
+            if (moveDirection != 0)
+            {
+                lastMoveDirection = moveDirection;
+            }
+
             holdTime += Time.deltaTime;
         }
 
@@ -60,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Calculate jump force based on hold time
         float jumpForce = Mathf.Lerp(minJumpForce, maxJumpForce, holdTime / maxHoldTime);
-        float horizontalJump = moveDirection * moveSpeed;
+        float horizontalJump = lastMoveDirection * moveSpeed;
 
         // Apply jump force in the direction
         rb.velocity = new Vector2(horizontalJump, jumpForce);
@@ -75,9 +81,10 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         // Ensure the player doesn't fall too fast
-        if (rb.velocity.y < -25f) // Replace with your max fall speed if different
+        if (rb.velocity.y < -20f) // Replace with your max fall speed if different
         {
-            rb.velocity = new Vector2(rb.velocity.x, -25f);
+            rb.velocity = new Vector2(rb.velocity.x, -20f);
         }
     }
 }
+
