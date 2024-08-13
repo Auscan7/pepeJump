@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4804817508728334260}
   - component: {fileID: 4755485854154324817}
   - component: {fileID: 9006724286874317288}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,8 @@ GameObject:
   - component: {fileID: 5858577278008950586}
   - component: {fileID: 3893669020084666637}
   - component: {fileID: 2315589325222938408}
-  m_Layer: 0
+  - component: {fileID: 5313116137887116970}
+  m_Layer: 3
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -197,6 +198,33 @@ MonoBehaviour:
   maxHealth: 100
   damage: 10
   healthBarFill: {fileID: 9069694146454637357}
+--- !u!50 &5313116137887116970
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6794810153251815347}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &8742862730289781274
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7744725257496403990}
   - component: {fileID: 9115770546599477379}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -376,6 +404,14 @@ PrefabInstance:
     - target: {fileID: 2851448084522319685, guid: b35149950ab471f4989eefbfd7dd7095, type: 3}
       propertyPath: m_Name
       value: HealthBarBackground
+      objectReference: {fileID: 0}
+    - target: {fileID: 2851448084522319685, guid: b35149950ab471f4989eefbfd7dd7095, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569717530530231837, guid: b35149950ab471f4989eefbfd7dd7095, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3569717530530231837, guid: b35149950ab471f4989eefbfd7dd7095, type: 3}
       propertyPath: m_IsActive

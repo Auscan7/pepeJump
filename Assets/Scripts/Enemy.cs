@@ -11,6 +11,10 @@ public class Enemy : MonoBehaviour
 
     private float currentHealth;
 
+    // Delegate and event for death notification
+    public delegate void DeathHandler();
+    public event DeathHandler OnDeath;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -38,6 +42,10 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
+        // Trigger the OnDeath event
+        OnDeath?.Invoke();
+
+        // Destroy the enemy object
         Destroy(gameObject);
     }
 

@@ -4,39 +4,61 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab;       // Reference to the enemy prefab
-    public float spawnInterval = 3f;     // Time between spawns
-    public float enemyHealth = 100f;     // Default health for spawned enemies
-    public float enemyDamage = 10f;      // Default damage for spawned enemies
-    public Transform[] spawnPoints;      // Array of spawn points
+    public GameObject[] enemyPrefabs;   // Array of enemy prefabs to spawn from this spawner
+    public float spawnDelay = 10f;      // Time delay before a new enemy is spawned after the previous one is killed
+    public Transform spawnPoint;        // Spawn point for this spawner
+
+    private GameObject currentEnemy;    // The currently spawned enemy
 
     private void Start()
     {
-        // Start the repeated spawning of enemies
-        InvokeRepeating("SpawnEnemy", 0f, spawnInterval);
+        // Spawn an enemy at the start
+        SpawnEnemy();
     }
 
-    void SpawnEnemy()
+    private void SpawnEnemy()
     {
-        if (enemyPrefab != null)
+        if (currentEnemy == null && enemyPrefabs.Length > 0)
         {
-            // Choose a random spawn point from the array
-            Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+            // Choose a random enemy prefab to spawn
+            GameObject enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
 
-            // Instantiate a new enemy at the chosen spawn point's position and rotation
-            GameObject newEnemy = Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+            // Instantiate the enemy at the spawn point
+            currentEnemy = Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
 
-            // Set the enemy's health and damage values
-            Enemy enemyScript = newEnemy.GetComponent<Enemy>();
+            // Start listening for the enemy's death
+            Enemy enemyScript = currentEnemy.GetComponent<Enemy>();
             if (enemyScript != null)
             {
-                enemyScript.maxHealth = enemyHealth;
-                enemyScript.damage = enemyDamage;
+                enemyScript.OnDeath += HandleEnemyDeath;
             }
         }
-        else
+    }
+
+    private void HandleEnemyDeath()
+    {
+        // Stop listening to the enemy's death event
+        Enemy enemyScript = currentEnemy.GetComponent<Enemy>();
+        if (enemyScript != null)
         {
-            Debug.LogWarning("Enemy prefab reference is missing!");
+            enemyScript.OnDeath -= HandleEnemyDeath;
         }
+
+        // Destroy the current enemy
+        Destroy(currentEnemy);
+
+        // Start the spawn delay coroutine
+        StartCoroutine(SpawnAfterDelay());
+    }
+
+    private IEnumerator SpawnAfterDelay()
+    {
+        // Wait for the specified delay time
+        yield return new WaitForSeconds(spawnDelay);
+
+        // Spawn a new enemy after the delay
+        SpawnEnemy();
     }
 }
+
+

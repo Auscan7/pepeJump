@@ -59,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Jump();
             isHoldingJump = false;
+            lastMoveDirection = 0f; // Reset the last remembered horizontal input after the jump
         }
     }
 
@@ -87,4 +88,3 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 }
-
