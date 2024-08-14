@@ -23,7 +23,10 @@ public class LevelEnd : MonoBehaviour
         // Mark the current level as completed and unlock the next level
         LevelManager.Instance.CompleteLevel();
 
-        // Show the level selection UI
-        UIManager.Instance.ShowLevelSelection();
+        // Only show the level selection UI if it's not already open
+        if (!UIManager.Instance.levelSelectionPanel.activeInHierarchy)
+        {
+            UIManager.Instance.ShowLevelSelection();
+        }
     }
 }
