@@ -60,6 +60,12 @@ public class UIManager : MonoBehaviour
         UpdateLevelButtons();
     }
 
+    public void CloseLevelSelection()
+    {
+        levelSelectionPanel.SetActive(false);
+        isPanelActive = false;
+    }
+
     public void UpdateLevelButtons()
     {
         for (int i = 0; i < levelButtons.Length; i++)
@@ -77,3 +83,4 @@ public class UIManager : MonoBehaviour
         }
     }
 }
+

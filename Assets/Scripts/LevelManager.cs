@@ -32,6 +32,11 @@ public class LevelManager : MonoBehaviour
 
     public void LoadLevel(int levelIndex)
     {
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.CloseLevelSelection(); // Close the level selection panel
+        }
+
         if (IsLevelUnlocked(levelIndex))
         {
             currentLevel = levelIndex;
@@ -71,3 +76,4 @@ public class LevelManager : MonoBehaviour
         return 10; // Set this to the total number of levels in your game
     }
 }
+
