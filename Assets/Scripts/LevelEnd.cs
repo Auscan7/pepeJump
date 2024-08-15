@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelEnd : MonoBehaviour
 {
-    public float levelEndDelay = 2f; // Time to wait before showing the level selection
+    public float levelEndDelay = 1f; // Time to wait before showing the level selection
 
     private void OnTriggerEnter2D(Collider2D other)
     {

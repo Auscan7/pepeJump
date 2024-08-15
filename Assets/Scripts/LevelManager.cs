@@ -52,7 +52,7 @@ public class LevelManager : MonoBehaviour
         }
 
         // Show the level selection UI after a short delay
-        Invoke("ShowLevelSelection", 2f); // 2-second delay
+        //Invoke("ShowLevelSelection", 2f); // 2-second delay
     }
 
     private void ShowLevelSelection()
