@@ -3128,7 +3128,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4544982650326204119, guid: 307269274b290994784d8752f5bc3263, type: 3}
       propertyPath: m_Name
-      value: Environment
+      value: Colliders
       objectReference: {fileID: 0}
     - target: {fileID: 8500659756029579818, guid: 307269274b290994784d8752f5bc3263, type: 3}
       propertyPath: m_LocalPosition.x
