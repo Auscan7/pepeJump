@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 {
     public float maxHealth = 100f;
     public float damage = 10f;
+    public int moneyReward = 50;  // Amount of money earned when this enemy is killed
     public Image healthBarFill;  // Reference to the health bar fill image
 
     private float currentHealth;
@@ -44,6 +45,9 @@ public class Enemy : MonoBehaviour
     {
         // Trigger the OnDeath event
         OnDeath?.Invoke();
+
+        // Award money to the player
+        MoneyManager.Instance.AddMoney(moneyReward);
 
         // Destroy the enemy object
         Destroy(gameObject);
