@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Equipment droppedEquipment = other.GetComponent<Equipment>();
+        DroppedEquipment droppedEquipment = other.GetComponent<DroppedEquipment>();
 
         if (droppedEquipment != null)
         {
@@ -54,9 +54,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    void CollectEquipment(Equipment equipment)
+    void CollectEquipment(DroppedEquipment droppedEquipment)
     {
         // Here you can add the equipment to the player's inventory (to be implemented later)
-        Debug.Log("Collected " + equipment.equipmentName + " (Tier " + equipment.tier + ")");
+        Debug.Log("Collected " + droppedEquipment.equipmentName + " (Tier " + droppedEquipment.equipmentTier + ")");
     }
 }

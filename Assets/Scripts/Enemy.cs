@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,9 +18,8 @@ public class Enemy : MonoBehaviour
     [System.Serializable]
     public class EquipmentDrop
     {
-        public Equipment equipment;
-        public float dropChance; // Chance of dropping this equipment
-        public float[] tierChances; // Chances for each tier
+        public string prefabName;  // Name of the prefab in the Resources folder
+        public float dropChance;   // Chance of dropping this equipment
     }
 
     void Start()
@@ -67,39 +64,44 @@ public class Enemy : MonoBehaviour
 
     void DropEquipment()
     {
+        // Calculate total drop chance
+        float totalDropChance = 0f;
         foreach (var drop in possibleDrops)
         {
-            float dropRoll = Random.Range(0f, 100f);
-            if (dropRoll <= drop.dropChance)
-            {
-                // Determine the tier of the dropped equipment
-                int tier = DetermineTier(drop.tierChances);
-                if (tier != -1)
-                {
-                    Equipment droppedEquipment = Instantiate(drop.equipment);
-                    droppedEquipment.tier = tier;
-                    Instantiate(droppedEquipment, transform.position, Quaternion.identity);
-                }
-            }
+            totalDropChance += drop.dropChance;
         }
-    }
 
-    int DetermineTier(float[] tierChances)
-    {
+        // Select one item to drop based on its chance
+        float roll = Random.Range(0f, totalDropChance);
         float cumulativeChance = 0f;
-        float roll = Random.Range(0f, 100f);
 
-        for (int i = 0; i < tierChances.Length; i++)
+        foreach (var drop in possibleDrops)
         {
-            cumulativeChance += tierChances[i];
+            cumulativeChance += drop.dropChance;
             if (roll <= cumulativeChance)
             {
-                return i + 1; // Tier is 1-based, so add 1
+                // Load the appropriate prefab from Resources
+                GameObject droppedEquipmentGO = Instantiate(Resources.Load(drop.prefabName), transform.position, Quaternion.identity) as GameObject;
+
+                if (droppedEquipmentGO == null)
+                {
+                    Debug.LogWarning($"Prefab '{drop.prefabName}' not found in Resources.");
+                    return; // Exit if prefab not found
+                }
+
+                // Optionally, ensure the dropped equipment has a DroppedEquipment component
+                // and configure it as necessary
+                DroppedEquipment droppedEquipment = droppedEquipmentGO.GetComponent<DroppedEquipment>();
+                if (droppedEquipment != null)
+                {
+                    // Configure dropped equipment if necessary
+                }
+
+                break; // Exit loop after dropping one item
             }
         }
-
-        return -1; // No tier determined
     }
+
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -114,4 +116,3 @@ public class Enemy : MonoBehaviour
         }
     }
 }
-

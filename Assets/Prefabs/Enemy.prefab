@@ -231,10 +231,10 @@ MonoBehaviour:
   moneyReward: 50
   healthBarFill: {fileID: 9069694146454637357}
   possibleDrops:
-  - equipment: {fileID: 11400000, guid: 4ec981ea608cbe647934f4011b78132e, type: 2}
-    dropChance: 100
-    tierChances:
-    - 100
+  - prefabName: T1Weapon
+    dropChance: 50
+  - prefabName: T2Weapon
+    dropChance: 50
 --- !u!50 &443779172468576059
 Rigidbody2D:
   serializedVersion: 4

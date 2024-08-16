@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 9190611952069167611}
   - component: {fileID: 2684767478487715785}
   - component: {fileID: 3497042689252863798}
+  - component: {fileID: 7644952221821061134}
   m_Layer: 0
-  m_Name: T1Weapon
+  m_Name: T2Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 99
-  m_Sprite: {fileID: 21300000, guid: 00b64e23e881f324ebec03a537833af6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f77cd3238f50b9d449a43c35e5252c92, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -122,7 +123,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.26, y: 0.07}
+    oldSize: {x: 0.29, y: 0.11}
     newSize: {x: 0.26, y: 0.07}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -156,5 +157,23 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
+--- !u!114 &7644952221821061134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8100521418543723409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe573f7520a93cc4e80b89494bdbeacc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentName: T2Weapon
+  equipmentTier: 2
+  collectionDelay: 1
+  upwardForce: 6
+  shrinkSpeed: 5
+  moveSpeed: 8

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13a7aa6cc92a31e46a97ca161f175489, type: 3}
-  m_Name: Tier1Weapon
+  m_Name: T2Weapon
   m_EditorClassIdentifier: 
-  equipmentName: Weapon
+  equipmentName: T2Weapon
   type: 3
   tier: 1
-  icon: {fileID: 8100521418543723409, guid: 0b5f363487e87cc4f9ed8f3ad9a191aa, type: 3}
+  icon: {fileID: 8100521418543723409, guid: 641f79d2729bd3048aefd8784f3974f5, type: 3}
   statValue: 50
