@@ -9,12 +9,21 @@ public class Enemy : MonoBehaviour
     public float damage = 10f;
     public int moneyReward = 50;  // Amount of money earned when this enemy is killed
     public Image healthBarFill;  // Reference to the health bar fill image
+    public EquipmentDrop[] possibleDrops; // List of possible equipment drops
 
     private float currentHealth;
 
     // Delegate and event for death notification
     public delegate void DeathHandler();
     public event DeathHandler OnDeath;
+
+    [System.Serializable]
+    public class EquipmentDrop
+    {
+        public Equipment equipment;
+        public float dropChance; // Chance of dropping this equipment
+        public float[] tierChances; // Chances for each tier
+    }
 
     void Start()
     {
@@ -49,8 +58,47 @@ public class Enemy : MonoBehaviour
         // Award money to the player
         MoneyManager.Instance.AddMoney(moneyReward);
 
+        // Drop equipment if applicable
+        DropEquipment();
+
         // Destroy the enemy object
         Destroy(gameObject);
+    }
+
+    void DropEquipment()
+    {
+        foreach (var drop in possibleDrops)
+        {
+            float dropRoll = Random.Range(0f, 100f);
+            if (dropRoll <= drop.dropChance)
+            {
+                // Determine the tier of the dropped equipment
+                int tier = DetermineTier(drop.tierChances);
+                if (tier != -1)
+                {
+                    Equipment droppedEquipment = Instantiate(drop.equipment);
+                    droppedEquipment.tier = tier;
+                    Instantiate(droppedEquipment, transform.position, Quaternion.identity);
+                }
+            }
+        }
+    }
+
+    int DetermineTier(float[] tierChances)
+    {
+        float cumulativeChance = 0f;
+        float roll = Random.Range(0f, 100f);
+
+        for (int i = 0; i < tierChances.Length; i++)
+        {
+            cumulativeChance += tierChances[i];
+            if (roll <= cumulativeChance)
+            {
+                return i + 1; // Tier is 1-based, so add 1
+            }
+        }
+
+        return -1; // No tier determined
     }
 
     void OnCollisionEnter2D(Collision2D collision)
