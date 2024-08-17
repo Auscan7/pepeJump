@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1811676510287011767}
   - component: {fileID: 8627220582419920634}
   - component: {fileID: 2160884708235561758}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ MonoBehaviour:
   maxJumpForce: 30
   maxHoldTime: 1
   moveSpeed: 10
-  groundCheckRadius: 0.1
+  groundCheckRadius: 0.15
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -144,7 +144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1273971332267772861}
   - component: {fileID: 221016517856795975}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +227,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7946757970475288046}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
