@@ -76,21 +76,21 @@ public class DroppedEquipment : MonoBehaviour
         // Move and shrink the item towards the player
         float startTime = Time.time;
         Vector3 startScale = transform.localScale;
-        Vector3 endScale = Vector3.zero;
+        Vector3 endScale = transform.localScale;
         Vector3 playerPosition = player.transform.position;
-        float duration = 1f; // Duration of the move and shrink animation
+        float duration = 0.1f; // Duration of the move and shrink animation
 
         while (Time.time - startTime < duration)
         {
             float t = (Time.time - startTime) / duration;
-            transform.localScale = Vector3.Lerp(startScale, endScale, t);
+            //transform.localScale = Vector3.Lerp(startScale, endScale, t);
             transform.position = Vector3.Lerp(transform.position, playerPosition, t);
 
             yield return null;
         }
 
         // Ensure final state is reached
-        transform.localScale = endScale;
+        //transform.localScale = endScale;
         transform.position = playerPosition;
 
         // Destroy the dropped equipment object after collection
