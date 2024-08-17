@@ -78,7 +78,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minJumpForce: 1.5
   maxJumpForce: 23
-  maxHoldTime: 1.2
+  maxHoldTime: 1
   moveSpeed: 7
   groundCheckRadius: 0.15
   groundLayer:

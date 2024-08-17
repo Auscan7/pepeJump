@@ -6,12 +6,14 @@ public class Player : MonoBehaviour
 {
     public float maxHealth = 100f;
     public float damage = 20f; // Damage the player deals on collision
+    public InventorySystem inventorySystem; // Reference to the InventorySystem
 
     private float currentHealth;
 
     void Start()
     {
         currentHealth = maxHealth;
+        inventorySystem = FindObjectOfType<InventorySystem>(); // Find the inventory system in the scene
     }
 
     public void TakeDamage(float amount)
@@ -43,9 +45,25 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        DroppedEquipment droppedEquipment = other.GetComponent<DroppedEquipment>();
+
+        if (droppedEquipment != null)
+        {
+            Sprite itemIcon = droppedEquipment.GetComponent<SpriteRenderer>().sprite; // Get the item sprite
+            bool itemAdded = inventorySystem.AddItem(itemIcon); // Attempt to add the item to the inventory
+
+            if (itemAdded)
+            {
+                Destroy(other.gameObject); // Remove the item from the scene if successfully added
+            }
+        }
+    }
+
     public void CollectEquipment(DroppedEquipment droppedEquipment)
     {
-        // Here you can add the equipment to the player's inventory (to be implemented later)
+        // This method is now handled by OnTriggerEnter2D
         Debug.Log("Collected " + droppedEquipment.equipmentName + " (Tier " + droppedEquipment.equipmentTier + ")");
     }
 }
