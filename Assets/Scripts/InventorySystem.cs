@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class InventorySystem : MonoBehaviour
 {
-    public GameObject inventoryUI; // Reference to the Inventory UI
+    public GameObject inventoryUI; // Reference to the Panel with the GridLayoutGroup
     public GameObject slotPrefab;  // Reference to the Inventory Slot prefab
     public int inventorySize = 20; // Total number of slots in the inventory
 

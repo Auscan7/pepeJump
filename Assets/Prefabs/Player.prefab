@@ -134,6 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 500
   damage: 50
+  inventorySystem: {fileID: 4714778116583128927, guid: 5229e9822b9ff7f40a099f8b088aac69, type: 3}
 --- !u!1 &6751712136011939584
 GameObject:
   m_ObjectHideFlags: 0
