@@ -289,8 +289,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.47624}
-  m_LocalScale: {x: 0.6323, y: 0.6323, z: 0.6323}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.56, y: 0.56, z: 0.56}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6277887398556020612}
   m_Father: {fileID: 5858577278008950586}
@@ -337,7 +337,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 99
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.3426244, g: 0.20652366, b: 0.8584906, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -381,11 +381,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19602037749270394, guid: b35149950ab471f4989eefbfd7dd7095, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 19602037749270394, guid: b35149950ab471f4989eefbfd7dd7095, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0.2
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 19602037749270394, guid: b35149950ab471f4989eefbfd7dd7095, type: 3}
       propertyPath: m_LocalPosition.x
@@ -421,7 +421,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19602037749270394, guid: b35149950ab471f4989eefbfd7dd7095, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -235.086
+      value: -235.512
       objectReference: {fileID: 0}
     - target: {fileID: 19602037749270394, guid: b35149950ab471f4989eefbfd7dd7095, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -434,6 +434,14 @@ PrefabInstance:
     - target: {fileID: 19602037749270394, guid: b35149950ab471f4989eefbfd7dd7095, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2828701224592282076, guid: b35149950ab471f4989eefbfd7dd7095, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2828701224592282076, guid: b35149950ab471f4989eefbfd7dd7095, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 2851448084522319685, guid: b35149950ab471f4989eefbfd7dd7095, type: 3}
       propertyPath: m_Name
