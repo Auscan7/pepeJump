@@ -76,10 +76,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27d8dea43b8b744408c411816bbfa298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minJumpForce: 3
-  maxJumpForce: 30
-  maxHoldTime: 1
-  moveSpeed: 10
+  minJumpForce: 1.5
+  maxJumpForce: 23
+  maxHoldTime: 1.2
+  moveSpeed: 7
   groundCheckRadius: 0.15
   groundLayer:
     serializedVersion: 2
