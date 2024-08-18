@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17aff3678505d224ab44d1bedbf5b2d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryUI: {fileID: 7666387300761215669, guid: 0949f526b685b9b4fae88b730544c3bc, type: 3}
+  inventoryUI: {fileID: 5715406282317633718, guid: c61dc4e549f9b5a42a280b18c4236ab7, type: 3}
   slotPrefab: {fileID: 3148548424323801241, guid: bfe46cc770fa3d94b90f832f4dd4a276, type: 3}
   inventorySize: 16

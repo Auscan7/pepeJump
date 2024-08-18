@@ -51,8 +51,8 @@ public class Player : MonoBehaviour
 
         if (droppedEquipment != null)
         {
-            Sprite itemIcon = droppedEquipment.GetComponent<SpriteRenderer>().sprite; // Get the item sprite
-            bool itemAdded = inventorySystem.AddItem(itemIcon); // Attempt to add the item to the inventory
+            string itemName = droppedEquipment.gameObject.name.Replace("(Clone)", "").Trim(); // Get the prefab name without "(Clone)"
+            bool itemAdded = inventorySystem.AddItem(itemName); // Attempt to add the item to the inventory
 
             if (itemAdded)
             {
@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
 
     public void CollectEquipment(DroppedEquipment droppedEquipment)
     {
-        // This method is now handled by OnTriggerEnter2D
+        // This method is now handled by OnTriggerEnter2D, but we'll keep it for additional use if needed
         Debug.Log("Collected " + droppedEquipment.equipmentName + " (Tier " + droppedEquipment.equipmentTier + ")");
     }
 }
