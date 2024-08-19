@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -10,6 +8,12 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f; // Speed for horizontal jump movement
     public float groundCheckRadius = 0.1f; // Radius for ground detection
     public LayerMask groundLayer; // LayerMask to define what is ground
+
+    public SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component
+    public Sprite idleSprite; // Sprite for idle state
+    public Sprite readyToJumpSprite; // Sprite for getting ready to jump state
+    public Sprite jumpSprite; // Sprite for jumping state
+    public Sprite fallSprite; // Sprite for falling state
 
     private Rigidbody2D rb;
     private bool isGrounded;
@@ -29,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     {
         HandleInput();
         CheckGrounded();
+        UpdateSprite();
     }
 
     void HandleInput()
@@ -85,6 +90,32 @@ public class PlayerMovement : MonoBehaviour
         if (rb.velocity.y < -20f) // Replace with your max fall speed if different
         {
             rb.velocity = new Vector2(rb.velocity.x, -20f);
+        }
+    }
+
+    void UpdateSprite()
+    {
+        // Flip the sprite based on the last move direction
+        if (lastMoveDirection != 0)
+        {
+            spriteRenderer.flipX = lastMoveDirection < 0; // Flip if moving left
+        }
+
+        if (isGrounded && !isHoldingJump)
+        {
+            spriteRenderer.sprite = idleSprite; // Idle state when grounded and not holding jump
+        }
+        else if (isGrounded && isHoldingJump)
+        {
+            spriteRenderer.sprite = readyToJumpSprite; // Getting ready to jump state
+        }
+        else if (rb.velocity.y > 0)
+        {
+            spriteRenderer.sprite = jumpSprite; // Jumping state when moving upwards
+        }
+        else if (rb.velocity.y < 0)
+        {
+            spriteRenderer.sprite = fallSprite; // Falling state when moving downwards
         }
     }
 }
