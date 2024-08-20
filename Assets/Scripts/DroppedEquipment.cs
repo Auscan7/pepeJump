@@ -63,8 +63,27 @@ public class DroppedEquipment : MonoBehaviour
 
             if (player != null)
             {
-                // Start the collection process
-                StartCoroutine(MoveAndShrinkTowardsPlayer(player));
+                // Check if the inventory is full before proceeding
+                string itemName = gameObject.name.Replace("(Clone)", "").Trim();
+                bool itemAdded = player.inventorySystem.AddItem(itemName);
+
+                if (itemAdded)
+                {
+                    StartCoroutine(MoveAndShrinkTowardsPlayer(player));
+                }
+                else
+                {
+                    Debug.Log("Inventory is full, item not collected.");
+                    // Re-enable the collider and gravity so the item can be collected later
+                    if (coll != null)
+                    {
+                        coll.enabled = true;
+                    }
+                    if (rb != null)
+                    {
+                        rb.gravityScale = 1f;
+                    }
+                }
             }
         }
     }
@@ -104,8 +123,7 @@ public class DroppedEquipment : MonoBehaviour
         transform.localScale = endScale;
         transform.position = playerPosition;
 
-        // Collect the item (e.g., add to inventory) and destroy the object
-        player.CollectEquipment(this);
+        // Destroy the item after the collection animation
         Destroy(gameObject);
     }
 }
