@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.EventSystems;
 
 public class InventorySystem : MonoBehaviour
 {
@@ -57,7 +58,11 @@ public class InventorySystem : MonoBehaviour
     {
         // Toggle the inventory UI on or off
         inventoryUI.SetActive(!inventoryUI.activeSelf);
+
+        // Ensure no UI button stays selected after clicking
+        EventSystem.current.SetSelectedGameObject(null);
     }
+
 
     private void SaveInventory()
     {

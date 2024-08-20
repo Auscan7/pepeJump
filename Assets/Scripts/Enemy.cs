@@ -52,8 +52,8 @@ public class Enemy : MonoBehaviour
         // Trigger the OnDeath event
         OnDeath?.Invoke();
 
-        // Award money to the player
-        MoneyManager.Instance.AddMoney(moneyReward);
+        // Award money to the player with the money sprite animation
+        MoneyManager.Instance.AddMoney(moneyReward, transform.position);
 
         // Drop equipment if applicable
         DropEquipment();
@@ -61,6 +61,7 @@ public class Enemy : MonoBehaviour
         // Destroy the enemy object
         Destroy(gameObject);
     }
+
 
     void DropEquipment()
     {
