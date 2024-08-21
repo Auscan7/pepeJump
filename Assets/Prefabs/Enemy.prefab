@@ -166,7 +166,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.00848504, y: -0.0008485466}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -177,7 +177,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.13792007, y: 0.26858947}
   m_EdgeRadius: 0
 --- !u!1 &6794810153251815347
 GameObject:
@@ -226,9 +226,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d648c36d835e0ae499990657850545bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 150
   damage: 10
-  moneyReward: 50
+  moneyReward: 1
   healthBarFill: {fileID: 9069694146454637357}
   possibleDrops:
   - prefabName: T1Weapon
@@ -288,8 +288,8 @@ Transform:
   m_GameObject: {fileID: 8742862730289781274}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.47624}
-  m_LocalScale: {x: 0.56, y: 0.56, z: 0.56}
+  m_LocalPosition: {x: -0.0032, y: 0.005, z: 0}
+  m_LocalScale: {x: 2.413555, y: 2.413555, z: 2.413555}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6277887398556020612}
@@ -336,8 +336,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 99
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.3426244, g: 0.20652366, b: 0.8584906, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 9d8b0548cc911954799afac7d4927d39, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -417,11 +417,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19602037749270394, guid: b35149950ab471f4989eefbfd7dd7095, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -139.688
+      value: -139.675
       objectReference: {fileID: 0}
     - target: {fileID: 19602037749270394, guid: b35149950ab471f4989eefbfd7dd7095, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -235.512
+      value: -235.654
       objectReference: {fileID: 0}
     - target: {fileID: 19602037749270394, guid: b35149950ab471f4989eefbfd7dd7095, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -434,14 +434,6 @@ PrefabInstance:
     - target: {fileID: 19602037749270394, guid: b35149950ab471f4989eefbfd7dd7095, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2828701224592282076, guid: b35149950ab471f4989eefbfd7dd7095, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2828701224592282076, guid: b35149950ab471f4989eefbfd7dd7095, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 2851448084522319685, guid: b35149950ab471f4989eefbfd7dd7095, type: 3}
       propertyPath: m_Name

@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class InventorySystem : MonoBehaviour
 {
     public GameObject inventoryUI; // Reference to the Panel with the GridLayoutGroup
+    public GameObject inventroyPanel; //To add slot prefabs as a child
     public GameObject slotPrefab;  // Reference to the Inventory Slot prefab
     public int inventorySize = 20; // Total number of slots in the inventory
 
@@ -18,7 +19,7 @@ public class InventorySystem : MonoBehaviour
         // Initialize the inventory UI
         for (int i = 0; i < inventorySize; i++)
         {
-            GameObject slot = Instantiate(slotPrefab, inventoryUI.transform);
+            GameObject slot = Instantiate(slotPrefab, inventroyPanel.transform);
             inventorySlots.Add(slot);
         }
 
