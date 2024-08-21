@@ -291,26 +291,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1682813720}
-    - target: {fileID: 5750506989876139134, guid: e312fc30fe0afdf4c9125bb254a8dfcf, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleInventory
-      objectReference: {fileID: 0}
-    - target: {fileID: 8365108100620689543, guid: e312fc30fe0afdf4c9125bb254a8dfcf, type: 3}
-      propertyPath: travelSpeed
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8365108100620689543, guid: e312fc30fe0afdf4c9125bb254a8dfcf, type: 3}
-      propertyPath: numberOfSprites
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8365108100620689543, guid: e312fc30fe0afdf4c9125bb254a8dfcf, type: 3}
-      propertyPath: moneySpritePrefab
-      value: 
-      objectReference: {fileID: 4058830174353646840, guid: 99208440de1565f45b5e39cd114d02d4, type: 3}
-    - target: {fileID: 8365108100620689543, guid: e312fc30fe0afdf4c9125bb254a8dfcf, type: 3}
-      propertyPath: moneyTextTransform
-      value: 
-      objectReference: {fileID: 2086852215}
     - target: {fileID: 8950342546839706067, guid: e312fc30fe0afdf4c9125bb254a8dfcf, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -6435,11 +6415,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8686085, y: 9.988695}
   m_EdgeRadius: 0
---- !u!224 &2086852215 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 247366692080507859, guid: e312fc30fe0afdf4c9125bb254a8dfcf, type: 3}
-  m_PrefabInstance: {fileID: 66914286}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2092208672
 GameObject:
   m_ObjectHideFlags: 0
@@ -6826,7 +6801,7 @@ Transform:
   m_GameObject: {fileID: 1086692737990103798}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.369066, y: 4.2667303, z: -0.4559767}
+  m_LocalPosition: {x: 7.3684645, y: 4.2667303, z: -0.4559767}
   m_LocalScale: {x: 3.0709, y: 3.0709, z: 3.0709}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6864,7 +6839,7 @@ Transform:
   m_GameObject: {fileID: 7831247539256079018}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.357525, y: 4.2974305, z: -0.4559767}
+  m_LocalPosition: {x: 7.3587284, y: 4.2974305, z: -0.4559767}
   m_LocalScale: {x: 3.0791, y: 3.0791, z: 3.0791}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7275,7 +7250,7 @@ Transform:
   m_GameObject: {fileID: 4328123289709864685}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.369191, y: 4.3216305, z: -0.4559767}
+  m_LocalPosition: {x: 7.3709965, y: 4.3216305, z: -0.4559767}
   m_LocalScale: {x: 3.0642, y: 3.0642, z: 3.0642}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7504,7 +7479,7 @@ Transform:
   m_GameObject: {fileID: 662331988148918412}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.3686748, y: 4.3345304, z: -0.4559767}
+  m_LocalPosition: {x: 7.3692765, y: 4.3345304, z: -0.4559767}
   m_LocalScale: {x: 3.0673, y: 3.0673, z: 3.0673}
   m_ConstrainProportionsScale: 0
   m_Children: []
