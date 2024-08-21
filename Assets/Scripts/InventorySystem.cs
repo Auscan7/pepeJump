@@ -11,6 +11,8 @@ public class InventorySystem : MonoBehaviour
     public GameObject slotPrefab;  // Reference to the Inventory Slot prefab
     public int inventorySize = 20; // Total number of slots in the inventory
 
+    public Sprite placeholderSprite; // Assign this to your specific placeholder sprite
+
     private List<GameObject> inventorySlots = new List<GameObject>(); // List to hold all slots
     private List<string> inventoryItems = new List<string>(); // List to store item names for saving/loading
 
@@ -32,12 +34,14 @@ public class InventorySystem : MonoBehaviour
 
     public bool AddItem(string itemName)
     {
-        // Find the first empty slot
+
+
+        // Find the first empty or placeholder slot
         foreach (GameObject slot in inventorySlots)
         {
             Image slotImage = slot.GetComponent<Image>();
 
-            if (slotImage.sprite == null)
+            if (slotImage.sprite == null || slotImage.sprite == placeholderSprite)
             {
                 GameObject itemPrefab = Resources.Load<GameObject>(itemName);
                 if (itemPrefab != null)
@@ -54,6 +58,7 @@ public class InventorySystem : MonoBehaviour
         Debug.Log("Inventory is full!");
         return false;
     }
+
 
     public void ToggleInventory()
     {

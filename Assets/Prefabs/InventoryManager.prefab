@@ -48,3 +48,4 @@ MonoBehaviour:
   inventroyPanel: {fileID: 0}
   slotPrefab: {fileID: 3148548424323801241, guid: bfe46cc770fa3d94b90f832f4dd4a276, type: 3}
   inventorySize: 30
+  placeholderSprite: {fileID: 21300000, guid: d27ecd6fdc669834ab5867ad334e2bbd, type: 3}
