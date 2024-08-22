@@ -8,6 +8,9 @@ public class DroppedEquipment : MonoBehaviour
     public float initialForce = 5f; // Force applied in the opposite direction of the player
     public float upwardForce = 2f;  // Upward force applied to the dropped item
     public float collectionDelay = 1f; // Delay before the item can be collected
+    public EquipmentType equipmentType; // Enum for equipment type
+
+    public enum EquipmentType { Weapon, Armor, Gloves, Boots }
 
     private Rigidbody2D rb; // Rigidbody2D component of the item
     private Collider2D coll; // Collider2D component of the item
