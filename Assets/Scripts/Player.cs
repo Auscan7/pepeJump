@@ -45,27 +45,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    //private void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    DroppedEquipment droppedEquipment = other.GetComponent<DroppedEquipment>();
-
-    //    if (droppedEquipment != null)
-    //    {
-    //        string itemName = droppedEquipment.gameObject.name.Replace("(Clone)", "").Trim(); // Get the prefab name without "(Clone)"
-    //        bool itemAdded = inventorySystem.AddItem(itemName); // Attempt to add the item to the inventory
-
-    //        if (itemAdded)
-    //        {
-    //            Destroy(other.gameObject); // Remove the item from the scene if successfully added
-    //        }
-    //        else
-    //        {
-    //            Debug.Log("Inventory is full, item not collected.");
-    //            // You can add additional logic here, such as playing a sound or showing a message to the player.
-    //        }
-    //    }
-    //}
-
     public void CollectEquipment(DroppedEquipment droppedEquipment)
     {
         // This method is now handled by OnTriggerEnter2D, but we'll keep it for additional use if needed
