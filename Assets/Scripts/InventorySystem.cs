@@ -5,23 +5,26 @@ using UnityEngine.EventSystems;
 
 public class InventorySystem : MonoBehaviour
 {
-    public GameObject inventoryUI; // Reference to the Panel with the GridLayoutGroup
-    public GameObject inventoryPanel; // To add slot prefabs as a child
-    public GameObject slotPrefab;  // Reference to the Inventory Slot prefab
-    public int inventorySize = 20; // Total number of slots in the inventory
+    public GameObject inventoryUI;
+    public GameObject inventoryPanel;
+    public GameObject slotPrefab;
+    public int inventorySize = 20;
 
-    public Sprite placeholderSprite; // Assign this to your specific placeholder sprite
+    public Sprite placeholderSprite;
 
-    private List<GameObject> inventorySlots = new List<GameObject>(); // List to hold all slots
-    public List<InventoryItem> inventoryItems = new List<InventoryItem>(); // List to store item data for saving/loading
+    private List<GameObject> inventorySlots = new List<GameObject>();
+    public List<InventoryItem> inventoryItems = new List<InventoryItem>();
+    public GridLayoutGroup gridLayoutGroup; // Reference to GridLayoutGroup
 
     void Start()
     {
+        gridLayoutGroup = inventoryPanel.GetComponent<GridLayoutGroup>(); // Initialize GridLayoutGroup
+
         // Initialize the inventory UI
         for (int i = 0; i < inventorySize; i++)
         {
             GameObject slot = Instantiate(slotPrefab, inventoryPanel.transform);
-            slot.AddComponent<InventorySlot>(); // Add InventorySlot script for drag and drop
+            slot.AddComponent<InventorySlot>();
             inventorySlots.Add(slot);
         }
 
@@ -75,7 +78,6 @@ public class InventorySystem : MonoBehaviour
         Debug.Log("Inventory is full!");
         return false;
     }
-
 
     public void UpdateInventorySlot(InventorySlot updatedSlot)
     {

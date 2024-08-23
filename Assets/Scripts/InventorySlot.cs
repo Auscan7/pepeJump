@@ -20,7 +20,10 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = gameObject.AddComponent<CanvasGroup>();
         inventorySystem = FindObjectOfType<InventorySystem>();
-        gridLayoutGroup = inventorySystem.inventoryPanel.GetComponent<GridLayoutGroup>();
+        if (inventorySystem != null)
+        {
+            gridLayoutGroup = inventorySystem.inventoryPanel.GetComponent<GridLayoutGroup>();
+        }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -38,6 +41,9 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         {
             gridLayoutGroup.enabled = false;
         }
+
+        // Manually sort all slots except the one being dragged
+        AutoSortInventoryExceptThis();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -61,15 +67,13 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 
         if (panelRect.rect.Contains(localPoint))
         {
-            // If dropped inside the inventory panel, find the closest slot
-            transform.SetParent(originalParent);
-
-            // Reposition the item based on grid layout
-            Vector2 slotPosition = GetSlotPositionAtLocalPoint(localPoint, panelRect);
-            rectTransform.anchoredPosition = slotPosition;
-
-            // Update grid layout
-            LayoutRebuilder.ForceRebuildLayoutImmediate(panelRect);
+            // Reparent and reposition the item back to the closest grid slot
+            Transform closestSlot = GetClosestSlot(localPoint);
+            if (closestSlot != null)
+            {
+                rectTransform.SetParent(closestSlot);
+                rectTransform.anchoredPosition = Vector2.zero;
+            }
         }
         else
         {
@@ -81,21 +85,30 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         if (gridLayoutGroup != null)
         {
             gridLayoutGroup.enabled = true;
+            gridLayoutGroup.SetLayoutHorizontal();
+            gridLayoutGroup.SetLayoutVertical();
         }
+
+        // Auto-sort inventory after drag ends
+        AutoSortInventory();
     }
 
-    // Helper method to get the position of a slot based on local point
-    private Vector2 GetSlotPositionAtLocalPoint(Vector2 localPoint, RectTransform panelRect)
+    private Transform GetClosestSlot(Vector2 localPoint)
     {
-        // Calculate the slot position based on the localPoint
-        Vector2 slotSize = gridLayoutGroup.cellSize;
-        Vector2 spacing = gridLayoutGroup.spacing;
+        float closestDistance = float.MaxValue;
+        Transform closestSlot = null;
 
-        // Convert localPoint to slot position
-        float x = Mathf.Floor((localPoint.x + panelRect.rect.width / 2) / (slotSize.x + spacing.x)) * (slotSize.x + spacing.x) - panelRect.rect.width / 2;
-        float y = Mathf.Floor((localPoint.y + panelRect.rect.height / 2) / (slotSize.y + spacing.y)) * (slotSize.y + spacing.y) - panelRect.rect.height / 2;
+        foreach (Transform slot in inventorySystem.inventoryPanel.transform)
+        {
+            float distance = Vector2.Distance(localPoint, slot.localPosition);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestSlot = slot;
+            }
+        }
 
-        return new Vector2(x, y);
+        return closestSlot;
     }
 
     private void ResetItemPosition()
@@ -103,7 +116,6 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         // Reset position to the original grid slot
         rectTransform.SetParent(originalParent);
         rectTransform.anchoredPosition = Vector2.zero;
-        LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)inventorySystem.inventoryPanel.transform);
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -121,11 +133,9 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         // Check if they are the same type and tier
         if (otherSlot.itemType == itemType && otherSlot.itemTier == itemTier)
         {
-            // Merge items: Create a new item with a higher tier
             int newTier = itemTier + 1;
-            string newItemName = "T" + newTier + itemType.ToString();  // Adjusted format to match your naming convention
+            string newItemName = "T" + newTier + itemType.ToString();
 
-            // Find and load the new item prefab
             GameObject newItemPrefab = Resources.Load<GameObject>(newItemName);
             if (newItemPrefab != null)
             {
@@ -133,20 +143,15 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 
                 if (newDroppedEquipment != null)
                 {
-                    // Update this slot with the merged item
                     GetComponent<Image>().sprite = newDroppedEquipment.inventorySprite;
                     itemName = newItemName;
                     itemTier = newTier;
 
-                    // Log the updated item details
-                    Debug.Log($"Merged Item - New Item: {newItemName}, Tier: {newTier}, Type: {itemType}, SpriteName: {newDroppedEquipment.inventorySprite.name}");
-
-                    // Remove only the items that are being merged
+                    // Remove old items and add the new merged item
                     inventorySystem.inventoryItems.RemoveAll(item =>
                         (item.name == otherSlot.itemName && item.tier == otherSlot.itemTier) ||
-                        (item.name == itemName && item.tier == itemTier && item.name != itemName)); // Ensure it doesn't remove the newly added item
+                        (item.name == itemName && item.tier == itemTier && item.name != itemName));
 
-                    // Add new item
                     inventorySystem.inventoryItems.Add(new InventorySystem.InventoryItem
                     {
                         name = newItemName,
@@ -155,22 +160,22 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                         spriteName = newDroppedEquipment.inventorySprite.name
                     });
 
-                    // Update the inventory slot
                     inventorySystem.UpdateInventorySlot(this);
 
-                    // Destroy the other slot's game object
                     Destroy(otherSlot.gameObject);
 
-                    // Log after merging and saving
-                    Debug.Log("Inventory before saving: " + string.Join(", ", inventorySystem.inventoryItems.Select(item => $"{item.name} (Tier: {item.tier})")));
-
-                    // Save inventory
                     inventorySystem.SaveInventory();
 
-                    // Log after saving
-                    Debug.Log("Inventory after merging and saving: " + string.Join(", ", inventorySystem.inventoryItems.Select(item => $"{item.name} (Tier: {item.tier})")));
+                    // Re-enable GridLayoutGroup after merging
+                    if (gridLayoutGroup != null)
+                    {
+                        gridLayoutGroup.enabled = true;
+                    }
 
-                    return; // Exit after successful merge
+                    // Auto-sort inventory after merging
+                    AutoSortInventory();
+
+                    return;
                 }
                 else
                 {
@@ -185,6 +190,29 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         else
         {
             Debug.Log("Items are not the same type and tier, cannot merge.");
+        }
+    }
+
+    private void AutoSortInventoryExceptThis()
+    {
+        // Sort all slots except the dragged one
+        for (int i = 0; i < inventorySystem.inventoryPanel.transform.childCount; i++)
+        {
+            Transform child = inventorySystem.inventoryPanel.transform.GetChild(i);
+            if (child != transform) // Skip the dragged item
+            {
+                child.SetSiblingIndex(i);
+            }
+        }
+    }
+
+    private void AutoSortInventory()
+    {
+        // Sort all slots in the inventory
+        for (int i = 0; i < inventorySystem.inventoryPanel.transform.childCount; i++)
+        {
+            Transform child = inventorySystem.inventoryPanel.transform.GetChild(i);
+            child.SetSiblingIndex(i);
         }
     }
 }
