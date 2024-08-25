@@ -112,16 +112,36 @@ public class InventorySystem : MonoBehaviour
             savedItems.Add(item.name + "," + item.tier + "," + item.type + "," + item.spriteName);
         }
 
+        Debug.Log("Saving Inventory: " + string.Join(";", savedItems));
+
         PlayerPrefs.SetString("InventoryItems", string.Join(";", savedItems));
         PlayerPrefs.Save();
     }
 
     private void LoadInventory()
     {
+        inventoryItems.Clear(); // Clear existing inventory items
+
+        // Clear all slots
+        foreach (GameObject slot in inventorySlots)
+        {
+            Image slotImage = slot.GetComponent<Image>();
+            InventorySlot inventorySlot = slot.GetComponent<InventorySlot>();
+
+            if (slotImage != null && inventorySlot != null)
+            {
+                slotImage.sprite = placeholderSprite;
+                inventorySlot.itemName = string.Empty;
+                inventorySlot.itemTier = 0;
+                inventorySlot.itemType = DroppedEquipment.EquipmentType.None;
+            }
+        }
+
         string savedItems = PlayerPrefs.GetString("InventoryItems", string.Empty);
         if (!string.IsNullOrEmpty(savedItems))
         {
             string[] items = savedItems.Split(';');
+            Debug.Log("Loading Inventory: " + savedItems);
             foreach (var item in items)
             {
                 string[] itemData = item.Split(',');

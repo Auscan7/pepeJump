@@ -11,7 +11,7 @@ public class DroppedEquipment : MonoBehaviour
     public EquipmentType equipmentType;
     public Sprite inventorySprite;
 
-    public enum EquipmentType { Weapon, Armor, Gloves, Boots }
+    public enum EquipmentType { Weapon, Armor, Gloves, Boots, None }
 
     private Rigidbody2D rb;
     private Collider2D coll;

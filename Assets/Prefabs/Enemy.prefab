@@ -232,9 +232,9 @@ MonoBehaviour:
   healthBarFill: {fileID: 9069694146454637357}
   possibleDrops:
   - prefabName: T1Weapon
-    dropChance: 50
+    dropChance: 100
   - prefabName: T2Weapon
-    dropChance: 50
+    dropChance: 0
 --- !u!50 &443779172468576059
 Rigidbody2D:
   serializedVersion: 4
