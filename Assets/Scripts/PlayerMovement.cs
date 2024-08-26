@@ -17,7 +17,6 @@ public class PlayerMovement : MonoBehaviour
 
     public AudioClip jumpSound; // Assign your jump sound effect in the Inspector
     public AudioClip landSound; // Assign your land sound effect in the Inspector
-    public AudioClip attackSound; // Assign your attack sound effect in the Inspector
 
     private Rigidbody2D rb;
     private bool isGrounded;

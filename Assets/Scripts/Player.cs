@@ -7,6 +7,9 @@ public class Player : MonoBehaviour
     public float maxHealth = 100f;
     public float damage = 20f; // Damage the player deals on collision
     public InventorySystem inventorySystem; // Reference to the InventorySystem
+    public AudioClip attackSound; // Assign your attack sound effect in the Inspector
+    public ParticleSystem attackParticle; // Assign your attack particle effect in the Inspector
+    private AudioSource audioSource; // Reference to the AudioSource component
 
     private float currentHealth;
 
@@ -14,6 +17,11 @@ public class Player : MonoBehaviour
     {
         currentHealth = maxHealth;
         inventorySystem = FindObjectOfType<InventorySystem>(); // Find the inventory system in the scene
+        audioSource = GetComponent<AudioSource>(); // Get the AudioSource component
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>(); // Add an AudioSource component if it doesn't exist
+        }
     }
 
     public void TakeDamage(float amount)
@@ -41,6 +49,11 @@ public class Player : MonoBehaviour
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);
+                // Play the attack sound effect
+                audioSource.PlayOneShot(attackSound);
+                // Play the attack particle effect
+                attackParticle.transform.position = collision.contacts[0].point;
+                attackParticle.Play();
             }
         }
     }

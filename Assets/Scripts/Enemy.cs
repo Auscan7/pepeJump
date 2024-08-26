@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+using System.Collections;
 public class Enemy : MonoBehaviour
 {
     public float maxHealth = 100f;
@@ -8,8 +8,10 @@ public class Enemy : MonoBehaviour
     public int moneyReward = 50;  // Amount of money earned when this enemy is killed
     public Image healthBarFill;  // Reference to the health bar fill image
     public EquipmentDrop[] possibleDrops; // List of possible equipment drops
+    public SpriteRenderer spriteRenderer; // Reference to the enemy's sprite renderer
 
     private float currentHealth;
+    private Color originalColor; // Store the original color of the sprite
 
     // Delegate and event for death notification
     public delegate void DeathHandler();
@@ -26,6 +28,8 @@ public class Enemy : MonoBehaviour
     {
         currentHealth = maxHealth;
         UpdateHealthBar();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>(); // Modified to use GetComponentInChildren
+        originalColor = spriteRenderer.color; // Store the original color
     }
 
     void UpdateHealthBar()
@@ -41,10 +45,20 @@ public class Enemy : MonoBehaviour
         currentHealth -= amount;
         UpdateHealthBar();
 
+        // Flash the enemy's sprite when hit
+        StartCoroutine(FlashSprite());
+
         if (currentHealth <= 0f)
         {
             Die();
         }
+    }
+
+    IEnumerator FlashSprite()
+    {
+        spriteRenderer.color = Color.red; // or any other color that will stand out
+        yield return new WaitForSeconds(0.1f);
+        spriteRenderer.color = originalColor;
     }
 
     void Die()
@@ -61,7 +75,6 @@ public class Enemy : MonoBehaviour
         // Destroy the enemy object
         Destroy(gameObject);
     }
-
 
     void DropEquipment()
     {
@@ -102,7 +115,6 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-
 
     void OnCollisionEnter2D(Collision2D collision)
     {

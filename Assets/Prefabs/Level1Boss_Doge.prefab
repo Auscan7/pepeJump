@@ -236,6 +236,7 @@ MonoBehaviour:
     dropChance: 100
   - prefabName: T2Weapon
     dropChance: 0
+  spriteRenderer: {fileID: 9115770546599477379}
 --- !u!50 &443779172468576059
 Rigidbody2D:
   serializedVersion: 4
