@@ -54,6 +54,9 @@ public class Player : MonoBehaviour
                 // Play the attack particle effect
                 attackParticle.transform.position = collision.contacts[0].point;
                 attackParticle.Play();
+
+                // Start the attack state
+                GetComponent<PlayerMovement>().StartAttack();
             }
         }
     }

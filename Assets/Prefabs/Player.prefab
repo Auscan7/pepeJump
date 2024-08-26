@@ -76,19 +76,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27d8dea43b8b744408c411816bbfa298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minJumpForce: 1
-  maxJumpForce: 20
+  minJumpForce: 0.75
+  maxJumpForce: 19.5
   maxHoldTime: 0.7
-  moveSpeed: 8
+  moveSpeed: 7
   groundCheckRadius: 0.25
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
   spriteRenderer: {fileID: 221016517856795975}
-  idleSprite: {fileID: 21300000, guid: 2b35f44fd9558b54b9b56c408fa31258, type: 3}
-  readyToJumpSprite: {fileID: 21300000, guid: 0e38414f74b1d6d44872a6de5656bfc1, type: 3}
-  jumpSprite: {fileID: 21300000, guid: b420163a5002c1544a277fd91a1dc140, type: 3}
-  fallSprite: {fileID: 21300000, guid: a29d0d15002b7094a89cfa5915f65053, type: 3}
+  idleSprite: {fileID: 21300000, guid: 69c0f179dea60a049ba40f00e311bc6c, type: 3}
+  readyToJumpSprite: {fileID: 21300000, guid: b80881ca17b88b5488c1f9502acd912f, type: 3}
+  jumpSprite: {fileID: 21300000, guid: bcbd23227e83b424bb4f7ae212c16787, type: 3}
+  fallSprite: {fileID: 21300000, guid: 7e1bb991d9c7daf40a6ed84f7b06f887, type: 3}
+  attackSprite: {fileID: 21300000, guid: c507febf9ce0f974bbe60e55bd304849, type: 3}
+  attackSpriteAlt: {fileID: 21300000, guid: 0eec2c4994acf6d499ea2a2580dd8ba3, type: 3}
   jumpSound: {fileID: 8300000, guid: 92c5fe5f9234a9c439aa386c4c05060b, type: 3}
   landSound: {fileID: 8300000, guid: f32dc20c984fb0a4997151ef10b69b2e, type: 3}
   groundCheck: {fileID: 7946757970475288046}
@@ -124,8 +126,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.034802556, y: -0.14460248}
-  m_Size: {x: 0.463794, y: 0.8674809}
+  m_Offset: {x: 0.034802556, y: -0.3669364}
+  m_Size: {x: 0.463794, y: 0.93209064}
   m_Direction: 0
 --- !u!114 &2160884708235561758
 MonoBehaviour:
@@ -217,7 +219,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 2b35f44fd9558b54b9b56c408fa31258, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 69c0f179dea60a049ba40f00e311bc6c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -253,7 +255,7 @@ Transform:
   m_GameObject: {fileID: 9036375377290321013}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.029, y: -0.622, z: 0}
+  m_LocalPosition: {x: 0.02, y: -0.796, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -15,6 +15,11 @@ public class PlayerMovement : MonoBehaviour
     public Sprite jumpSprite; // Sprite for jumping state
     public Sprite fallSprite; // Sprite for falling state
 
+    public Sprite attackSprite; // Sprite for attack state
+    public Sprite attackSpriteAlt;
+    private bool isAttacking = false; // Flag to indicate if the player is attacking
+    private float attackDuration = 0.2f; // Duration of the attack state
+
     public AudioClip jumpSound; // Assign your jump sound effect in the Inspector
     public AudioClip landSound; // Assign your land sound effect in the Inspector
 
@@ -123,8 +128,12 @@ public class PlayerMovement : MonoBehaviour
         {
             spriteRenderer.flipX = lastMoveDirection < 0; // Flip if moving left
         }
-
-        if (isGrounded && !isHoldingJump)
+        if (isAttacking)
+        {
+            // Use the previously chosen attack sprite
+            spriteRenderer.sprite = currentAttackSprite;
+        }
+        else if (isGrounded && !isHoldingJump)
         {
             spriteRenderer.sprite = idleSprite; // Idle state when grounded and not holding jump
         }
@@ -141,4 +150,21 @@ public class PlayerMovement : MonoBehaviour
             spriteRenderer.sprite = fallSprite; //
         }
     }
+
+    // Add a new method to handle the attack state
+    public void StartAttack()
+    {
+        isAttacking = true;
+        // Choose a random attack sprite only once when the attack starts
+        int attackSpriteIndex = Random.Range(0, 2);
+        currentAttackSprite = attackSpriteIndex == 0 ? attackSprite : attackSpriteAlt;
+        Invoke(nameof(EndAttack), attackDuration);
+    }
+
+    void EndAttack()
+    {
+        isAttacking = false;
+    }
+
+    private Sprite currentAttackSprite; // Store the chosen attack sprite for the attack duration
 }
