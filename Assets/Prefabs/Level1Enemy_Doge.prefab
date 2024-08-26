@@ -128,11 +128,11 @@ Transform:
   m_GameObject: {fileID: 6394682011630219139}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.56099653}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.039, y: 0.024, z: 1.3539959}
+  m_LocalScale: {x: 2.413555, y: 2.413555, z: 2.413555}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7744725257496403990}
+  m_Father: {fileID: 5858577278008950586}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &7028846399095857546
 BoxCollider2D:
@@ -166,7 +166,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00848504, y: -0.0008485466}
+  m_Offset: {x: 0.00916655, y: -0.025055975}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -177,7 +177,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.13792007, y: 0.26858947}
+  m_Size: {x: 0.20111027, y: 0.31700432}
   m_EdgeRadius: 0
 --- !u!1 &6794810153251815347
 GameObject:
@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 2315589325222938408}
   - component: {fileID: 443779172468576059}
   m_Layer: 3
-  m_Name: Enemy
+  m_Name: Level1Enemy_Doge
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -211,6 +211,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7744725257496403990}
+  - {fileID: 6277887398556020612}
   - {fileID: 8669817510830066159}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -273,7 +274,7 @@ GameObject:
   - component: {fileID: 7744725257496403990}
   - component: {fileID: 9115770546599477379}
   m_Layer: 3
-  m_Name: Square
+  m_Name: Visual
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -288,11 +289,10 @@ Transform:
   m_GameObject: {fileID: 8742862730289781274}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0032, y: 0.005, z: 0}
-  m_LocalScale: {x: 2.413555, y: 2.413555, z: 2.413555}
+  m_LocalPosition: {x: -0.03899998, y: 0.20799981, z: 0}
+  m_LocalScale: {x: 0.25304002, y: 0.25304002, z: 0.25304002}
   m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 6277887398556020612}
+  m_Children: []
   m_Father: {fileID: 5858577278008950586}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &9115770546599477379
@@ -336,12 +336,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 99
-  m_Sprite: {fileID: 21300000, guid: 9d8b0548cc911954799afac7d4927d39, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fffde91104b2da648b87163fa54e8826, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4.65, y: 4.99}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -388,6 +388,18 @@ PrefabInstance:
       value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 19602037749270394, guid: b35149950ab471f4989eefbfd7dd7095, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.70905644
+      objectReference: {fileID: 0}
+    - target: {fileID: 19602037749270394, guid: b35149950ab471f4989eefbfd7dd7095, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6818766
+      objectReference: {fileID: 0}
+    - target: {fileID: 19602037749270394, guid: b35149950ab471f4989eefbfd7dd7095, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.96143246
+      objectReference: {fileID: 0}
+    - target: {fileID: 19602037749270394, guid: b35149950ab471f4989eefbfd7dd7095, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -421,7 +433,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19602037749270394, guid: b35149950ab471f4989eefbfd7dd7095, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -235.654
+      value: -235.58
       objectReference: {fileID: 0}
     - target: {fileID: 19602037749270394, guid: b35149950ab471f4989eefbfd7dd7095, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

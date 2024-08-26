@@ -89,6 +89,9 @@ MonoBehaviour:
   readyToJumpSprite: {fileID: 21300000, guid: 0e38414f74b1d6d44872a6de5656bfc1, type: 3}
   jumpSprite: {fileID: 21300000, guid: b420163a5002c1544a277fd91a1dc140, type: 3}
   fallSprite: {fileID: 21300000, guid: a29d0d15002b7094a89cfa5915f65053, type: 3}
+  jumpSound: {fileID: 8300000, guid: 94351fb410dd47f45ad051bf08d2c10e, type: 3}
+  landSound: {fileID: 8300000, guid: 94351fb410dd47f45ad051bf08d2c10e, type: 3}
+  attackSound: {fileID: 8300000, guid: 94351fb410dd47f45ad051bf08d2c10e, type: 3}
   groundCheck: {fileID: 7946757970475288046}
 --- !u!70 &8627220582419920634
 CapsuleCollider2D:

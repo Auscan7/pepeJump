@@ -15,18 +15,30 @@ public class PlayerMovement : MonoBehaviour
     public Sprite jumpSprite; // Sprite for jumping state
     public Sprite fallSprite; // Sprite for falling state
 
+    public AudioClip jumpSound; // Assign your jump sound effect in the Inspector
+    public AudioClip landSound; // Assign your land sound effect in the Inspector
+    public AudioClip attackSound; // Assign your attack sound effect in the Inspector
+
     private Rigidbody2D rb;
     private bool isGrounded;
     private bool isHoldingJump = false;
     private float holdTime = 0f;
     private float moveDirection = 0f;
     private float lastMoveDirection = 0f; // Stores the last horizontal input direction
+    private bool wasGrounded = false; // Stores the previous grounded state
+
+    private AudioSource audioSource; // Reference to the AudioSource component
 
     public Transform groundCheck; // Empty GameObject positioned at the player's feet
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>(); // Get the AudioSource component
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>(); // Add an AudioSource component if it doesn't exist
+        }
     }
 
     void Update()
@@ -34,6 +46,15 @@ public class PlayerMovement : MonoBehaviour
         HandleInput();
         CheckGrounded();
         UpdateSprite();
+
+        // Check if the player has just landed
+        if (isGrounded && !wasGrounded)
+        {
+            // Play land sound effect
+            audioSource.PlayOneShot(landSound);
+        }
+
+        wasGrounded = isGrounded;
     }
 
     void HandleInput()
@@ -76,6 +97,9 @@ public class PlayerMovement : MonoBehaviour
 
         // Apply jump force in the direction
         rb.velocity = new Vector2(horizontalJump, jumpForce);
+
+        // Play jump sound effect
+        audioSource.PlayOneShot(jumpSound);
     }
 
     void CheckGrounded()
@@ -115,7 +139,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (rb.velocity.y < 0)
         {
-            spriteRenderer.sprite = fallSprite; // Falling state when moving downwards
+            spriteRenderer.sprite = fallSprite; //
         }
     }
 }
