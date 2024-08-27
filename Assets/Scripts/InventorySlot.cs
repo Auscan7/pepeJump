@@ -139,22 +139,38 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 
             bool isDroppedInside = panelRect.rect.Contains(localPoint);
 
-            if (isDroppedInside)
+            DeleteArea deleteArea = GameObject.Find("DeleteArea").GetComponent<DeleteArea>();
+            if (deleteArea == null)
             {
-                InventorySlot targetSlot = GetSlotAtPosition(localPoint);
-                if (targetSlot != null && targetSlot != this)
+                Debug.LogError("DeleteArea component not found!");
+            }
+            else
+            {
+                Vector2 deleteAreaLocalPoint;
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(deleteArea.rectTransform, Input.mousePosition, null, out deleteAreaLocalPoint);
+                if (deleteArea.rectTransform.rect.Contains(deleteAreaLocalPoint))
                 {
-                    Debug.Log("Merging items...");
-                    MergeItems(targetSlot);
+                    // Delete the item
+                    DeleteItem();
+                    Debug.Log("DeleteArea rect: " + deleteArea.rectTransform.rect);
+                }
+                else if (isDroppedInside)
+                {
+                    InventorySlot targetSlot = GetSlotAtPosition(localPoint);
+                    if (targetSlot != null && targetSlot != this)
+                    {
+                        Debug.Log("Merging items...");
+                        MergeItems(targetSlot);
+                    }
+                    else
+                    {
+                        ResetItemPosition();
+                    }
                 }
                 else
                 {
                     ResetItemPosition();
                 }
-            }
-            else
-            {
-                ResetItemPosition();
             }
 
             if (gridLayoutGroup != null)
@@ -163,13 +179,31 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                 gridLayoutGroup.SetLayoutHorizontal();
                 gridLayoutGroup.SetLayoutVertical();
             }
-
-
         }
         else
         {
             Debug.LogError("InventorySystem is null.");
         }
+    }
+    private void DeleteItem()
+    {
+        // Find the item in the inventoryItems list
+        InventorySystem.InventoryItem itemToRemove = inventorySystem.inventoryItems.Find(item => item.name == itemName && item.tier == itemTier && item.type == itemType);
+
+        if (itemToRemove != null)
+        {
+            // Remove the item from the inventory
+            inventorySystem.inventoryItems.Remove(itemToRemove);
+        }
+
+        // Reset the slot
+        GetComponent<Image>().sprite = inventorySystem.placeholderSprite;
+        itemName = string.Empty;
+        itemTier = 0;
+        itemType = DroppedEquipment.EquipmentType.None;
+
+        // Save the inventory
+        inventorySystem.SaveInventory();
     }
 
     private void CleanUpDragCanvas()
