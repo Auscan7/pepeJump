@@ -91,7 +91,7 @@ MonoBehaviour:
   fallSprite: {fileID: 21300000, guid: 7e1bb991d9c7daf40a6ed84f7b06f887, type: 3}
   attackSprite: {fileID: 21300000, guid: c507febf9ce0f974bbe60e55bd304849, type: 3}
   attackSpriteAlt: {fileID: 21300000, guid: 0eec2c4994acf6d499ea2a2580dd8ba3, type: 3}
-  jumpSound: {fileID: 8300000, guid: 92c5fe5f9234a9c439aa386c4c05060b, type: 3}
+  jumpSound: {fileID: 8300000, guid: e97c141a07e23f0498687fe7adc45e86, type: 3}
   landSound: {fileID: 8300000, guid: f32dc20c984fb0a4997151ef10b69b2e, type: 3}
   groundCheck: {fileID: 7946757970475288046}
 --- !u!70 &8627220582419920634

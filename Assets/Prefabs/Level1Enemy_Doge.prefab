@@ -231,7 +231,7 @@ MonoBehaviour:
   damage: 10
   moneyReward: 1
   healthBarFill: {fileID: 9069694146454637357}
-  itemDropChance: 15
+  itemDropChance: 100
   possibleDrops:
   - prefabName: T1Weapon
     dropChance: 5

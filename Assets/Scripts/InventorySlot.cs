@@ -164,7 +164,7 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                 gridLayoutGroup.SetLayoutVertical();
             }
 
-            AutoSortInventory();
+
         }
         else
         {
@@ -229,123 +229,154 @@ public class InventorySlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 
     private void MergeItems(InventorySlot otherSlot)
     {
-        Debug.Log("MergeItems called.");
-
-        if (otherSlot.itemType == itemType && otherSlot.itemTier == itemTier)
+        if (otherSlot == null)
         {
-            try
+            Debug.LogError("otherSlot is null.");
+            return;
+        }
+
+        if (otherSlot.itemType != itemType || otherSlot.itemTier != itemTier)
+        {
+            Debug.Log("Items are not the same type or tier, cannot merge.");
+            return;
+        }
+
+        int newTier = itemTier + 1;
+        string newItemName = "T" + newTier + itemType.ToString();
+
+        GameObject newItemPrefab = Resources.Load<GameObject>(newItemName);
+        if (newItemPrefab == null)
+        {
+            Debug.LogError("New item prefab not found: " + newItemName);
+            return;
+        }
+
+        DroppedEquipment newDroppedEquipment = newItemPrefab.GetComponent<DroppedEquipment>();
+        if (newDroppedEquipment == null)
+        {
+            Debug.LogError("New item prefab does not have DroppedEquipment component: " + newItemName);
+            return;
+        }
+
+        // Update the current slot to the new item
+        GetComponent<Image>().sprite = newDroppedEquipment.inventorySprite;
+        itemName = newItemName;
+        itemTier = newTier;
+
+        // Find and mark the two items that should be removed
+        var itemsToRemove = new List<InventorySystem.InventoryItem>();
+        foreach (var item in inventorySystem.inventoryItems)
+        {
+            if (item.name == otherSlot.itemName && item.tier == otherSlot.itemTier && item.type == otherSlot.itemType)
             {
-                int newTier = itemTier + 1;
-                string newItemName = "T" + newTier + itemType.ToString();
-
-                GameObject newItemPrefab = Resources.Load<GameObject>(newItemName);
-                if (newItemPrefab != null)
+                itemsToRemove.Add(item);
+                if (itemsToRemove.Count == 2)
                 {
-                    DroppedEquipment newDroppedEquipment = newItemPrefab.GetComponent<DroppedEquipment>();
-
-                    if (newDroppedEquipment != null)
-                    {
-                        // Update the current slot to the new item
-                        GetComponent<Image>().sprite = newDroppedEquipment.inventorySprite;
-                        itemName = newItemName;
-                        itemTier = newTier;
-
-                        // Find and mark the two items that should be removed
-                        var itemsToRemove = new List<InventorySystem.InventoryItem>();
-                        foreach (var item in inventorySystem.inventoryItems)
-                        {
-                            if (item.name == otherSlot.itemName && item.tier == otherSlot.itemTier && item.type == otherSlot.itemType)
-                            {
-                                itemsToRemove.Add(item);
-                                if (itemsToRemove.Count == 2)
-                                {
-                                    break; // Stop after finding the two items to merge
-                                }
-                            }
-                        }
-
-                        // Remove the two specific items that were merged
-                        foreach (var item in itemsToRemove)
-                        {
-                            inventorySystem.inventoryItems.Remove(item);
-                        }
-
-                        // Add the new merged item to the inventory
-                        inventorySystem.inventoryItems.Add(new InventorySystem.InventoryItem
-                        {
-                            name = newItemName,
-                            tier = newTier,
-                            type = itemType,
-                            spriteName = newDroppedEquipment.inventorySprite.name
-                        });
-
-                        // Update the UI for the other slot
-                        otherSlot.GetComponent<Image>().sprite = inventorySystem.placeholderSprite;
-                        otherSlot.itemName = string.Empty;
-                        otherSlot.itemTier = 0;
-                        otherSlot.itemType = DroppedEquipment.EquipmentType.None;
-
-                        // Clean up DragCanvas for the other slot
-                        otherSlot.CleanUpDragCanvas();
-
-                        // Save the inventory after updating
-                        inventorySystem.SaveInventory();
-
-                        // Reset the CanvasGroup for the new item
-                        if (canvasGroup != null)
-                        {
-                            canvasGroup.alpha = 1f;
-                            canvasGroup.blocksRaycasts = true;
-                        }
-
-                        // Reset the CanvasGroup for the other slot
-                        CanvasGroup otherCanvasGroup = otherSlot.GetComponent<CanvasGroup>();
-                        if (otherCanvasGroup != null)
-                        {
-                            otherCanvasGroup.alpha = 1f;
-                            otherCanvasGroup.blocksRaycasts = true;
-                        }
-                        else
-                        {
-                            // Ensure that the other slot has a CanvasGroup component
-                            otherCanvasGroup = otherSlot.gameObject.AddComponent<CanvasGroup>();
-                            otherCanvasGroup.alpha = 1f;
-                            otherCanvasGroup.blocksRaycasts = true;
-                        }
-
-                        // Auto-sort inventory after merging
-                        AutoSortInventory();
-
-                        return;
-                    }
-                    else
-                    {
-                        Debug.LogWarning($"DroppedEquipment component not found in {newItemName} prefab.");
-                    }
-                }
-                else
-                {
-                    Debug.LogWarning($"Prefab {newItemName} not found in Resources.");
+                    break; // Stop after finding the two items to merge
                 }
             }
-            catch (Exception ex)
-            {
-                Debug.LogError("Error in MergeItems: " + ex.Message);
-            }
+        }
+
+        // Remove the two specific items that were merged
+        foreach (var item in itemsToRemove)
+        {
+            inventorySystem.inventoryItems.Remove(item);
+        }
+
+        // Add the new merged item to the inventory
+        inventorySystem.inventoryItems.Add(new InventorySystem.InventoryItem
+        {
+            name = newItemName,
+            tier = newTier,
+            type = itemType,
+            spriteName = newDroppedEquipment.inventorySprite.name
+        });
+
+        // Update the UI for the other slot
+        otherSlot.GetComponent<Image>().sprite = inventorySystem.placeholderSprite;
+        otherSlot.itemName = string.Empty;
+        otherSlot.itemTier = 0;
+        otherSlot.itemType = DroppedEquipment.EquipmentType.None;
+
+        // Clean up DragCanvas for the other slot
+        otherSlot.CleanUpDragCanvas();
+
+        // Save the inventory after updating
+        inventorySystem.SaveInventory();
+
+        // Reset the CanvasGroup for the new item
+        if (canvasGroup != null)
+        {
+            canvasGroup.alpha = 1f;
+            canvasGroup.blocksRaycasts = true;
+        }
+
+        // Reset the CanvasGroup for the other slot
+        CanvasGroup otherCanvasGroup = otherSlot.GetComponent<CanvasGroup>();
+        if (otherCanvasGroup != null)
+        {
+            otherCanvasGroup.alpha = 1f;
+            otherCanvasGroup.blocksRaycasts = true;
         }
         else
         {
-            Debug.Log("Items are not the same type and tier, cannot merge.");
+            // Ensure that the other slot has a CanvasGroup component
+            otherCanvasGroup = otherSlot.gameObject.AddComponent<CanvasGroup>();
+            otherCanvasGroup.alpha = 1f;
+            otherCanvasGroup.blocksRaycasts = true;
         }
     }
 
-    private void AutoSortInventory()
+    public void AutoSortInventory()
     {
-        // Sort all slots in the inventory
-        for (int i = 0; i < inventorySystem.inventoryPanel.transform.childCount; i++)
+        Debug.Log("AutoSortInventory called.");
+
+        // Get all inventory slots
+        InventorySlot[] inventorySlots = inventorySystem.inventoryPanel.GetComponentsInChildren<InventorySlot>();
+
+        Debug.Log("Inventory slots count: " + inventorySlots.Length);
+
+        // Sort inventory slots by whether they have an item, then by tier (descending), and finally by type
+        Array.Sort(inventorySlots, (a, b) =>
         {
-            Transform child = inventorySystem.inventoryPanel.transform.GetChild(i);
-            child.SetSiblingIndex(i);
+            if (string.IsNullOrEmpty(a.itemName) && !string.IsNullOrEmpty(b.itemName))
+            {
+                return 1; // Empty slot comes after non-empty slot
+            }
+            else if (!string.IsNullOrEmpty(a.itemName) && string.IsNullOrEmpty(b.itemName))
+            {
+                return -1; // Non-empty slot comes before empty slot
+            }
+            else
+            {
+                if (a.itemTier != b.itemTier)
+                {
+                    return b.itemTier.CompareTo(a.itemTier); // Sort by tier in descending order
+                }
+                else
+                {
+                    return a.itemType.CompareTo(b.itemType); // Sort by type
+                }
+            }
+        });
+
+        // Reorder the inventory slots in the panel
+        for (int i = 0; i < inventorySlots.Length; i++)
+        {
+            inventorySlots[i].transform.SetSiblingIndex(i);
         }
+
+        // Trigger a layout rebuild on the GridLayoutGroup
+        GridLayoutGroup gridLayoutGroup = inventorySystem.inventoryPanel.GetComponent<GridLayoutGroup>();
+        gridLayoutGroup.enabled = false;
+        gridLayoutGroup.enabled = true;
+
+        // Save the inventory
+        inventorySystem.SaveInventory();
+
+        // Unset the currently selected object in the EventSystem
+        EventSystem.current.SetSelectedGameObject(null);
+
+        Debug.Log("AutoSortInventory completed.");
     }
 }
