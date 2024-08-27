@@ -11,6 +11,8 @@ public class MoneyManager : MonoBehaviour
     public GameObject moneySpritePrefab; // Reference to the money sprite prefab
     public RectTransform moneyTextTransform; // Reference to the RectTransform of the money text
 
+    public AudioClip moneyAddedSoundEffect; //Reference to the money collection audio
+
     public int numberOfSprites = 5; // Number of money sprites to spawn
     public float travelSpeed = 1.0f; // Speed of sprite travel
     public float spawnRadius = 0.5f; // Radius for random spawn position
@@ -72,6 +74,14 @@ public class MoneyManager : MonoBehaviour
         currentMoney += amount;
         UpdateMoneyUI();
         StartCoroutine(AnimateMoneyText());
+
+        // Play a sound effect when money is added
+        AudioSource audioSource = GetComponent<AudioSource>();
+        if (audioSource != null)
+        {
+            audioSource.PlayOneShot(moneyAddedSoundEffect);
+        }
+
         SaveMoney();
     }
 
