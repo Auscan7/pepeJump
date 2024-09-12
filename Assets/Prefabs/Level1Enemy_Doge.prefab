@@ -229,14 +229,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   damage: 10
-  moneyReward: 1
+  moneyReward: 3
   healthBarFill: {fileID: 9069694146454637357}
-  itemDropChance: 100
-  possibleDrops:
-  - prefabName: T1Weapon
-    dropChance: 5
-  - prefabName: T2Weapon
-    dropChance: 1
   spriteRenderer: {fileID: 9115770546599477379}
 --- !u!50 &443779172468576059
 Rigidbody2D:

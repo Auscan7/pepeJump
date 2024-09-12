@@ -1,14 +1,17 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     public float maxHealth = 100f;
     public float damage = 20f; // Damage the player deals on collision
+    public float armor = 5f; // Armor value (mitigates damage taken)
     public AudioClip attackSound; // Assign your attack sound effect in the Inspector
     public ParticleSystem attackParticle; // Assign your attack particle effect in the Inspector
     private AudioSource audioSource; // Reference to the AudioSource component
 
-    private float currentHealth;
+    public Image healthBarFill;  // Reference to the health bar fill image
+    public float currentHealth;
 
     void Start()
     {
@@ -22,11 +25,22 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        currentHealth -= amount;
+        // Calculate the effective damage after armor mitigation
+        float effectiveDamage = Mathf.Max(0f, amount - armor);
+
+        currentHealth -= effectiveDamage;
+        UpdateHealthBar();
 
         if (currentHealth <= 0f)
         {
             Die();
+        }
+    }
+    void UpdateHealthBar()
+    {
+        if (healthBarFill != null)
+        {
+            healthBarFill.fillAmount = currentHealth / maxHealth;
         }
     }
 

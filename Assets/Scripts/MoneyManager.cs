@@ -38,17 +38,18 @@ public class MoneyManager : MonoBehaviour
 
     public void AddMoney(int amount, Vector3 enemyPosition)
     {
-        // Spawn multiple money sprites and move them towards the money UI
+        currentMoney += amount; // Add the amount to the current money only once
         for (int i = 0; i < numberOfSprites; i++)
         {
             Vector3 randomOffset = new Vector3(Random.Range(-spawnRadius, spawnRadius), Random.Range(-spawnRadius, spawnRadius), 0);
             Vector3 spawnPosition = enemyPosition + randomOffset;
             GameObject moneySprite = Instantiate(moneySpritePrefab, spawnPosition, Quaternion.identity);
-            StartCoroutine(MoveMoneySpriteToUI(moneySprite, amount));
+            StartCoroutine(MoveMoneySpriteToUI(moneySprite));
         }
+        SaveMoney();
     }
 
-    private IEnumerator MoveMoneySpriteToUI(GameObject moneySprite, int amount)
+    private IEnumerator MoveMoneySpriteToUI(GameObject moneySprite)
     {
         Vector3 startPosition = moneySprite.transform.position;
         Vector3 endPosition = Camera.main.ScreenToWorldPoint(moneyTextTransform.position);
@@ -71,7 +72,6 @@ public class MoneyManager : MonoBehaviour
         Destroy(moneySprite);
 
         // Update the money amount and animate the money text
-        currentMoney += amount;
         UpdateMoneyUI();
         StartCoroutine(AnimateMoneyText());
 
