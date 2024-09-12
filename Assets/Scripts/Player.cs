@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     public float maxHealth = 100f;
     public float damage = 20f; // Damage the player deals on collision
-    public InventorySystem inventorySystem; // Reference to the InventorySystem
     public AudioClip attackSound; // Assign your attack sound effect in the Inspector
     public ParticleSystem attackParticle; // Assign your attack particle effect in the Inspector
     private AudioSource audioSource; // Reference to the AudioSource component
@@ -16,7 +13,6 @@ public class Player : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        inventorySystem = FindObjectOfType<InventorySystem>(); // Find the inventory system in the scene
         audioSource = GetComponent<AudioSource>(); // Get the AudioSource component
         if (audioSource == null)
         {
@@ -59,11 +55,5 @@ public class Player : MonoBehaviour
                 GetComponent<PlayerMovement>().StartAttack();
             }
         }
-    }
-
-    public void CollectEquipment(DroppedEquipment droppedEquipment)
-    {
-        // This method is now handled by OnTriggerEnter2D, but we'll keep it for additional use if needed
-        Debug.Log("Collected " + droppedEquipment.equipmentName + " (Tier " + droppedEquipment.equipmentTier + ")");
     }
 }
