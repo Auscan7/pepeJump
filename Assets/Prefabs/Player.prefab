@@ -245,14 +245,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f7c39b8bcf6e2d489fab3259b3de858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
-  damage: 5
+  currentHealth: 0
+  maxHealth: 100
+  damage: 20
   armor: 5
   pushBackForce: 10
   attackSound: {fileID: 8300000, guid: 3a3173b8b1ca4bf40b13aa9ed828e711, type: 3}
   attackParticle: {fileID: 198435890141970726, guid: 8333d50130027574ca8b4e0268fdd047, type: 3}
   healthBarFill: {fileID: 3035248995842260008}
-  currentHealth: 0
 --- !u!82 &194250222637920532
 AudioSource:
   m_ObjectHideFlags: 0

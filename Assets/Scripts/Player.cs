@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    public float maxHealth = 100f;
     public float currentHealth;
+    public float maxHealth = 100f;
     public float damage = 20f; // Damage the player deals on collision
     public float armor = 5f; // Armor value (mitigates damage taken)
 

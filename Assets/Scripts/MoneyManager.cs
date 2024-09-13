@@ -6,7 +6,7 @@ public class MoneyManager : MonoBehaviour
 {
     public static MoneyManager Instance;
     public TextMeshProUGUI moneyText; // Updated to use TextMeshProUGUI
-    private int currentMoney = 0;
+    public int currentMoney = 0;
 
     public GameObject moneySpritePrefab; // Reference to the money sprite prefab
     public RectTransform moneyTextTransform; // Reference to the RectTransform of the money text
@@ -34,6 +34,11 @@ public class MoneyManager : MonoBehaviour
     {
         LoadMoney();
         UpdateMoneyUI();
+    }
+
+    private int GetCurrentMoney()
+    {
+        return currentMoney;
     }
 
     public void AddMoney(int amount, Vector3 enemyPosition)
@@ -113,12 +118,12 @@ public class MoneyManager : MonoBehaviour
         moneyTextTransform.localScale = originalScale;
     }
 
-    private void UpdateMoneyUI()
+    public void UpdateMoneyUI()
     {
         moneyText.text = currentMoney.ToString();
     }
 
-    private void SaveMoney()
+    public void SaveMoney()
     {
         PlayerPrefs.SetInt("PlayerMoney", currentMoney);
         PlayerPrefs.Save();
