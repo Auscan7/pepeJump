@@ -73,8 +73,9 @@ public class UpgradeManager : MonoBehaviour
         moneyManager = MoneyManager.Instance;
 
         // Initialize the UI texts and buttons
-        LoadUpgrades();
         InitializeUI();
+        LoadUpgrades();
+        
     }
 
     void InitializeUI()
@@ -111,7 +112,9 @@ public class UpgradeManager : MonoBehaviour
         {
             // Upgrade the health
             player.maxHealth += healthUpgradeValues[healthUpgradeLevel];
+            player.currentHealth += healthUpgradeValues[healthUpgradeLevel];
             healthCurrentValueText.text = player.maxHealth.ToString();
+            player.UpdateHealthBar();
 
             // Update the upgrade level and price
             healthUpgradeLevel++;
@@ -226,6 +229,7 @@ public class UpgradeManager : MonoBehaviour
 
         // Update the player's stats based on the loaded upgrade levels
         player.maxHealth = 100f + healthUpgradeValues.GetRange(0, healthUpgradeLevel).Sum();
+        player.currentHealth = 100f + healthUpgradeValues.GetRange(0, healthUpgradeLevel).Sum();
         player.damage = 20f + damageUpgradeValues.GetRange(0, damageUpgradeLevel).Sum();
         player.armor = 5f + armorUpgradeValues.GetRange(0, armorUpgradeLevel).Sum();
 
@@ -234,7 +238,7 @@ public class UpgradeManager : MonoBehaviour
         damageUpgradeLevelText.text = "Lvl" + damageUpgradeLevel;
         armorUpgradeLevelText.text = "Lvl" + armorUpgradeLevel;
 
-        // Update the upgrade prices and values
+        // Update the price and value texts based on the loaded upgrade levels
         healthUpgradePriceText.text = "$" + healthUpgradePrices[healthUpgradeLevel].ToString();
         healthUpgradeValueText.text = "+" + healthUpgradeValues[healthUpgradeLevel].ToString();
 
@@ -244,9 +248,67 @@ public class UpgradeManager : MonoBehaviour
         armorUpgradePriceText.text = "$" + armorUpgradePrices[armorUpgradeLevel].ToString();
         armorUpgradeValueText.text = "+" + armorUpgradeValues[armorUpgradeLevel].ToString();
 
-        // Update the current value texts
+
+        // Update the current value texts in UI
         healthCurrentValueText.text = player.maxHealth.ToString();
         damageCurrentValueText.text = player.damage.ToString();
         armorCurrentValueText.text = player.armor.ToString();
+
+        // Update Health Upgrade UI
+        if (healthUpgradeLevel < maxHealthUpgradeLevel)
+        {
+            healthUpgradeLevelText.text = "Lvl" + healthUpgradeLevel;
+            healthUpgradePriceText.text = "$" + healthUpgradePrices[healthUpgradeLevel].ToString();
+            healthUpgradeValueText.text = "+" + healthUpgradeValues[healthUpgradeLevel].ToString();
+            healthMaxedText.text = "";  // Clear maxed text
+            healthUpgradeButton.interactable = true;  // Enable button
+        }
+        else
+        {
+            // Maxed out
+            healthUpgradeLevelText.text = "";
+            healthUpgradePriceText.text = "";
+            healthUpgradeValueText.text = "";
+            healthMaxedText.text = "Maxed";
+            healthUpgradeButton.interactable = false;  // Disable button
+        }
+
+        // Update Damage Upgrade UI
+        if (damageUpgradeLevel < maxDamageUpgradeLevel)
+        {
+            damageUpgradeLevelText.text = "Lvl" + damageUpgradeLevel;
+            damageUpgradePriceText.text = "$" + damageUpgradePrices[damageUpgradeLevel].ToString();
+            damageUpgradeValueText.text = "+" + damageUpgradeValues[damageUpgradeLevel].ToString();
+            damageMaxedText.text = "";  // Clear maxed text
+            damageUpgradeButton.interactable = true;  // Enable button
+        }
+        else
+        {
+            // Maxed out
+            damageUpgradeLevelText.text = "";
+            damageUpgradePriceText.text = "";
+            damageUpgradeValueText.text = "";
+            damageMaxedText.text = "Maxed";
+            damageUpgradeButton.interactable = false;  // Disable button
+        }
+
+        // Update Armor Upgrade UI
+        if (armorUpgradeLevel < maxArmorUpgradeLevel)
+        {
+            armorUpgradeLevelText.text = "Lvl" + armorUpgradeLevel;
+            armorUpgradePriceText.text = "$" + armorUpgradePrices[armorUpgradeLevel].ToString();
+            armorUpgradeValueText.text = "+" + armorUpgradeValues[armorUpgradeLevel].ToString();
+            armorMaxedText.text = "";  // Clear maxed text
+            armorUpgradeButton.interactable = true;  // Enable button
+        }
+        else
+        {
+            // Maxed out
+            armorUpgradeLevelText.text = "";
+            armorUpgradePriceText.text = "";
+            armorUpgradeValueText.text = "";
+            armorMaxedText.text = "Maxed";
+            armorUpgradeButton.interactable = false;  // Disable button
+        }
     }
 }

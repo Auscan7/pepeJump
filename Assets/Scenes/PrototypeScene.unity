@@ -9468,7 +9468,6 @@ MonoBehaviour:
   maxHealthUpgradeLevel: 2
   maxDamageUpgradeLevel: 2
   maxArmorUpgradeLevel: 2
-  maxedText: {fileID: 0}
 --- !u!114 &1112566248
 MonoBehaviour:
   m_ObjectHideFlags: 0
