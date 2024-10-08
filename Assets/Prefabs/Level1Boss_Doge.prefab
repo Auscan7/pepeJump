@@ -166,7 +166,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.088375255, y: 0.056549773}
+  m_Offset: {x: -0.088375255, y: 0.3009262}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -177,7 +177,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3259342, y: 0.47108427}
+  m_Size: {x: 0.3259342, y: 0.9598373}
   m_EdgeRadius: 0
 --- !u!1 &6794810153251815347
 GameObject:
@@ -227,14 +227,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d648c36d835e0ae499990657850545bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 700
-  damage: 50
-  moneyReward: 10
+  maxHealth: 500
+  damage: 40
+  moneyReward: 200
   healthBarFill: {fileID: 9069694146454637357}
-  itemDropChance: 90
-  possibleDrops:
-  - prefabName: T3Weapon
-    dropChance: 100
   spriteRenderer: {fileID: 9115770546599477379}
 --- !u!50 &443779172468576059
 Rigidbody2D:
@@ -450,6 +446,14 @@ PrefabInstance:
     - target: {fileID: 2851448084522319685, guid: b35149950ab471f4989eefbfd7dd7095, type: 3}
       propertyPath: m_Name
       value: HealthBarBackground
+      objectReference: {fileID: 0}
+    - target: {fileID: 2851448084522319685, guid: b35149950ab471f4989eefbfd7dd7095, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569717530530231837, guid: b35149950ab471f4989eefbfd7dd7095, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

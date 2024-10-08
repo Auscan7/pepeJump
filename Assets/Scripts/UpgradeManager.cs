@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using TMPro;
 using System.Linq;
+using UnityEngine.EventSystems;
 
 public class UpgradeManager : MonoBehaviour
 {
@@ -141,6 +142,7 @@ public class UpgradeManager : MonoBehaviour
             healthUpgradeLevelText.text = "";
             healthMaxedText.text = "Maxed";
         }
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     void OnDamageUpgradeButtonClick()
@@ -176,6 +178,7 @@ public class UpgradeManager : MonoBehaviour
             damageUpgradeLevelText.text = "";
             damageMaxedText.text = "Maxed";
         }
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     void OnArmorUpgradeButtonClick()
@@ -211,6 +214,7 @@ public class UpgradeManager : MonoBehaviour
             armorUpgradeLevelText.text = "";
             armorMaxedText.text = "Maxed";
         }
+        EventSystem.current.SetSelectedGameObject(null);
     }
     private void SaveUpgrades()
     {

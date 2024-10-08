@@ -1,5 +1,7 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -50,7 +52,8 @@ public class Player : MonoBehaviour
     void Die()
     {
         Debug.Log("Player Died");
-        // Add your death logic here (e.g., restart the level)
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     }
 
     void OnCollisionEnter2D(Collision2D collision)

@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 2315589325222938408}
   - component: {fileID: 443779172468576059}
   m_Layer: 3
-  m_Name: Level1Enemy_Doge
+  m_Name: Level2Enemy_Doge
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -227,9 +227,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d648c36d835e0ae499990657850545bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  damage: 10
-  moneyReward: 5
+  maxHealth: 200
+  damage: 25
+  moneyReward: 10
   healthBarFill: {fileID: 9069694146454637357}
   spriteRenderer: {fileID: 9115770546599477379}
 --- !u!50 &443779172468576059
