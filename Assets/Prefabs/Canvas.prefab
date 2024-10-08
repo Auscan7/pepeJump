@@ -2899,24 +2899,75 @@ MonoBehaviour:
   armorUpgradePriceText: {fileID: 5817435343024160321}
   armorUpgradeLevelText: {fileID: 7871528923400315987}
   armorMaxedText: {fileID: 4506140420493723582}
-  healthUpgradePrices: 020000000400000006000000
+  healthUpgradePrices: 050000000a000000140000001e000000280000003c00000050000000640000007d00000096000000c8000000fa0000002c01000077010000c2010000260200008a020000ee02000052030000e8030000
   healthUpgradeValues:
-  - 4
-  - 25
-  - 100
-  damageUpgradePrices: 050000000a0000000f000000
-  damageUpgradeValues:
+  - 5
+  - 5
+  - 5
+  - 5
+  - 5
+  - 7
+  - 7
+  - 7
+  - 7
+  - 7
+  - 7
   - 10
-  - 20
-  - 30
-  armorUpgradePrices: 0a0000001900000032000000
-  armorUpgradeValues:
-  - 2
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 13
+  - 13
+  damageUpgradePrices: 050000000a000000140000001e000000280000003c00000050000000640000007d00000096000000c8000000fa0000002c01000077010000c2010000260200008a020000ee02000052030000e8030000
+  damageUpgradeValues:
+  - 3
   - 3
   - 4
-  maxHealthUpgradeLevel: 2
-  maxDamageUpgradeLevel: 2
-  maxArmorUpgradeLevel: 2
+  - 4
+  - 4
+  - 4
+  - 5
+  - 5
+  - 5
+  - 5
+  - 5
+  - 5
+  - 5
+  - 5
+  - 6
+  - 6
+  - 6
+  - 6
+  - 7
+  - 7
+  armorUpgradePrices: 050000000a000000140000001e000000280000003c00000050000000640000007d00000096000000c8000000fa0000002c01000077010000c2010000260200008a020000ee02000052030000e8030000
+  armorUpgradeValues:
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 4
+  - 4
+  - 4
+  - 4
+  maxHealthUpgradeLevel: 19
+  maxDamageUpgradeLevel: 19
+  maxArmorUpgradeLevel: 19
   maxedText: {fileID: 0}
 --- !u!114 &7779439716794894294
 MonoBehaviour:

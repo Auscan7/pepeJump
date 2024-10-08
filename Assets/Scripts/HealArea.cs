@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HealArea : MonoBehaviour
@@ -9,6 +10,7 @@ public class HealArea : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Heal(collision);
+            Destroy(gameObject);
         }
     }
 
