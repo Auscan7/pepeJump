@@ -229,7 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1500
   damage: 100
-  moneyReward: 1000
+  moneyReward: 1750
   healthBarFill: {fileID: 9069694146454637357}
   spriteRenderer: {fileID: 9115770546599477379}
 --- !u!50 &443779172468576059
