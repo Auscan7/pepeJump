@@ -1095,6 +1095,63 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5580492, y: 0.24912119}
   m_EdgeRadius: 0
+--- !u!1001 &804858490
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5858577278008950586, guid: 84a17c1ee4f0a744a93f0a3a880d800c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.650342
+      objectReference: {fileID: 0}
+    - target: {fileID: 5858577278008950586, guid: 84a17c1ee4f0a744a93f0a3a880d800c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 16.717438
+      objectReference: {fileID: 0}
+    - target: {fileID: 5858577278008950586, guid: 84a17c1ee4f0a744a93f0a3a880d800c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.56099653
+      objectReference: {fileID: 0}
+    - target: {fileID: 5858577278008950586, guid: 84a17c1ee4f0a744a93f0a3a880d800c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5858577278008950586, guid: 84a17c1ee4f0a744a93f0a3a880d800c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5858577278008950586, guid: 84a17c1ee4f0a744a93f0a3a880d800c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5858577278008950586, guid: 84a17c1ee4f0a744a93f0a3a880d800c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5858577278008950586, guid: 84a17c1ee4f0a744a93f0a3a880d800c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5858577278008950586, guid: 84a17c1ee4f0a744a93f0a3a880d800c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5858577278008950586, guid: 84a17c1ee4f0a744a93f0a3a880d800c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6794810153251815347, guid: 84a17c1ee4f0a744a93f0a3a880d800c, type: 3}
+      propertyPath: m_Name
+      value: Level2Boss_Doge
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 84a17c1ee4f0a744a93f0a3a880d800c, type: 3}
 --- !u!1 &806580457
 GameObject:
   m_ObjectHideFlags: 0
@@ -1522,63 +1579,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.6840801, y: 1.0502439}
   m_EdgeRadius: 0
---- !u!1001 &991186524
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5858577278008950586, guid: ac55e365b92b6924383e62452fa5a56c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -7.51301
-      objectReference: {fileID: 0}
-    - target: {fileID: 5858577278008950586, guid: ac55e365b92b6924383e62452fa5a56c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 16.711826
-      objectReference: {fileID: 0}
-    - target: {fileID: 5858577278008950586, guid: ac55e365b92b6924383e62452fa5a56c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.56099653
-      objectReference: {fileID: 0}
-    - target: {fileID: 5858577278008950586, guid: ac55e365b92b6924383e62452fa5a56c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5858577278008950586, guid: ac55e365b92b6924383e62452fa5a56c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5858577278008950586, guid: ac55e365b92b6924383e62452fa5a56c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5858577278008950586, guid: ac55e365b92b6924383e62452fa5a56c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5858577278008950586, guid: ac55e365b92b6924383e62452fa5a56c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5858577278008950586, guid: ac55e365b92b6924383e62452fa5a56c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5858577278008950586, guid: ac55e365b92b6924383e62452fa5a56c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6794810153251815347, guid: ac55e365b92b6924383e62452fa5a56c, type: 3}
-      propertyPath: m_Name
-      value: Level2Boss_Doge
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ac55e365b92b6924383e62452fa5a56c, type: 3}
 --- !u!1 &1030028894
 GameObject:
   m_ObjectHideFlags: 0
@@ -2352,6 +2352,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2480834546254707418, guid: 25541ec570364e9499caa2a3d53b6012, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480834546254707418, guid: 25541ec570364e9499caa2a3d53b6012, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6711132
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480834546254707418, guid: 25541ec570364e9499caa2a3d53b6012, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5424528
+      objectReference: {fileID: 0}
     - target: {fileID: 5428520929219882668, guid: 25541ec570364e9499caa2a3d53b6012, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.59
@@ -10384,5 +10396,5 @@ SceneRoots:
   - {fileID: 166140507}
   - {fileID: 1433228427}
   - {fileID: 1276325176}
-  - {fileID: 991186524}
   - {fileID: 1404329856}
+  - {fileID: 804858490}
