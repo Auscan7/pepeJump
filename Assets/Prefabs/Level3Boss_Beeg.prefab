@@ -166,7 +166,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.088375255, y: 0.056549773}
+  m_Offset: {x: -0.07714157, y: 0.06216652}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -177,7 +177,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3259342, y: 0.47108427}
+  m_Size: {x: 0.29223305, y: 0.4738925}
   m_EdgeRadius: 0
 --- !u!1 &6794810153251815347
 GameObject:
@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 2315589325222938408}
   - component: {fileID: 443779172468576059}
   m_Layer: 3
-  m_Name: Level3Boss_Doge
+  m_Name: Level3Boss_Beeg
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -285,8 +285,8 @@ Transform:
   m_GameObject: {fileID: 8742862730289781274}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.157, y: 0.132, z: -1.0746}
-  m_LocalScale: {x: 0.66233224, y: 0.66233224, z: 0.66233224}
+  m_LocalPosition: {x: -0.201, y: -0.241, z: -1.0746}
+  m_LocalScale: {x: 0.165, y: 0.165, z: 0.165}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5858577278008950586}
@@ -332,7 +332,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 99
-  m_Sprite: {fileID: 21300000, guid: 1569c687b354b4f4392d47f95d9f3a0b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 20426e49dc6e7a64e8d363395a4691f0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
