@@ -1388,7 +1388,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294958080
+    rgba: 4280427042
   m_fontColor: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -1442,7 +1442,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 79.075584, y: 0, z: 80.254036, w: 0}
+  m_margin: {x: -1.3043022, y: 0, z: 0.32827568, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2801,48 +2801,48 @@ MonoBehaviour:
   armorMaxedText: {fileID: 7790238986755923353}
   healthUpgradePrices: 050000000a000000140000001e000000280000003c00000050000000640000007d00000096000000c8000000fa0000002c01000077010000c2010000260200008a020000ee02000052030000e8030000
   healthUpgradeValues:
-  - 5
-  - 5
-  - 5
-  - 5
-  - 5
-  - 7
-  - 7
-  - 7
-  - 7
-  - 7
-  - 7
   - 10
   - 10
   - 10
   - 10
   - 10
-  - 10
-  - 10
-  - 13
-  - 13
+  - 15
+  - 15
+  - 15
+  - 15
+  - 15
+  - 15
+  - 20
+  - 20
+  - 20
+  - 20
+  - 20
+  - 20
+  - 25
+  - 25
+  - 25
   damageUpgradePrices: 050000000a000000140000001e000000280000003c00000050000000640000007d00000096000000c8000000fa0000002c01000077010000c2010000260200008a020000ee02000052030000e8030000
   damageUpgradeValues:
-  - 3
-  - 3
-  - 4
-  - 4
   - 4
   - 4
   - 5
   - 5
   - 5
   - 5
-  - 5
-  - 5
-  - 5
-  - 5
+  - 6
+  - 6
   - 6
   - 6
   - 6
   - 6
   - 7
   - 7
+  - 7
+  - 7
+  - 8
+  - 8
+  - 8
+  - 8
   armorUpgradePrices: 050000000a000000140000001e000000280000003c00000050000000640000007d00000096000000c8000000fa0000002c01000077010000c2010000260200008a020000ee02000052030000e8030000
   armorUpgradeValues:
   - 2
@@ -3120,7 +3120,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294958080
+    rgba: 4280427042
   m_fontColor: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -3174,7 +3174,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 79.075584, y: 0, z: 80.254036, w: 0}
+  m_margin: {x: 0.058090158, y: 0, z: 0.7823906, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4705,7 +4705,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294958080
+    rgba: 4280427042
   m_fontColor: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -4759,7 +4759,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 79.075584, y: 0, z: 80.254036, w: 0}
+  m_margin: {x: 0.0580597, y: 0, z: 2.1447773, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

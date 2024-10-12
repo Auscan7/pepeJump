@@ -35,8 +35,17 @@ public class PlayerMovement : MonoBehaviour
 
     public Transform groundCheck; // Empty GameObject positioned at the player's feet
 
+    [Header("Ready for jump collider")]
+    //Player collider when crouching   
+    public Vector2 colliderXHeight;
+    public Vector2 colliderXOffset;
+    public Vector2 colliderDefaultXHeight;
+    public Vector2 colliderDefaultXOffset;
+    private CapsuleCollider2D playerCollider;
+
     void Start()
     {
+        playerCollider = GetComponent<CapsuleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>(); // Get the AudioSource component
         if (audioSource == null)
@@ -82,6 +91,11 @@ public class PlayerMovement : MonoBehaviour
             }
 
             holdTime += Time.deltaTime;
+
+            //Collider size change
+            playerCollider.size = colliderXHeight;
+            playerCollider.offset = colliderXOffset;
+
         }
 
         // Release jump button
@@ -90,6 +104,10 @@ public class PlayerMovement : MonoBehaviour
             Jump();
             isHoldingJump = false;
             lastMoveDirection = 0f; // Reset the last remembered horizontal input after the jump
+
+            //Collider size reset
+            playerCollider.size = colliderDefaultXHeight;
+            playerCollider.offset = colliderDefaultXOffset;
         }
     }
 

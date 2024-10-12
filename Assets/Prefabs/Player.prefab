@@ -198,6 +198,10 @@ MonoBehaviour:
   jumpSound: {fileID: 8300000, guid: e97c141a07e23f0498687fe7adc45e86, type: 3}
   landSound: {fileID: 8300000, guid: f32dc20c984fb0a4997151ef10b69b2e, type: 3}
   groundCheck: {fileID: 7946757970475288046}
+  colliderXHeight: {x: 0.463794, y: 0.4606132}
+  colliderXOffset: {x: 0.03480256, y: -0.5422563}
+  colliderDefaultXHeight: {x: 0.463794, y: 0.9212263}
+  colliderDefaultXOffset: {x: 0.03480256, y: -0.3615042}
 --- !u!70 &8627220582419920634
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
